@@ -4,231 +4,422 @@
  */
 
 const PRODUCTOS = [
+  // ===========================
   // HAMBURGUESAS
+  // ===========================
   {
     id: 1,
-    nombre: "Hamburguesa Simple",
-    descripcion: "Pan suave, carne de res, lechuga y tomate",
-    precio: 12000,
+    nombre: "Burger Especial",
+    descripcion: "Pan, carne de la casa, tocineta, jamón, butifarra, chorizo, pollo, tomate, cebolla, lechuga, salsas y queso mozzarella.",
+    precio: 31000,
     categoria: "Hamburguesas",
-    imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop",
-    etiqueta: null
-  },
-  {
-    id: 2,
-    nombre: "Hamburguesa Mix",
-    descripcion: "Doble carne, queso, tocino, huevo y salsa especial",
-    precio: 18000,
-    categoria: "Hamburguesas",
-    imagen: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&h=400&fit=crop",
+    imagen: "/images/burger-especial.jpg",
     etiqueta: "Más vendido"
   },
   {
-    id: 3,
-    nombre: "Hamburguesa Premium",
-    descripcion: "Carne Angus, queso cheddar, tocino crujiente, aro de cebolla",
-    precio: 22000,
+    id: 2,
+    nombre: "Burger Doble Carne Tradicional",
+    descripcion: "Pan, doble carne de la casa, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
+    precio: 26000,
     categoria: "Hamburguesas",
-    imagen: "https://images.unsplash.com/photo-1599504346566-f9639cd995c1?w=400&h=400&fit=crop",
-    etiqueta: "Nuevo"
+    imagen: "/images/burger-doble-carne.jpg",
+    etiqueta: null
+  },
+  {
+    id: 3,
+    nombre: "Burger Doble Carne Corralito",
+    descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, queso mozzarella, papa ripio.",
+    precio: 23000,
+    categoria: "Hamburguesas",
+    imagen: "/../img/burger-corralito.jpg",
+    etiqueta: null
   },
   {
     id: 4,
-    nombre: "Hamburguesa Jalapeño",
-    descripcion: "Con jalapeños frescos, queso, y salsa picante",
-    precio: 16000,
+    nombre: "Burger Mix",
+    descripcion: "Pan, carne de la casa, tocineta, butifarra, chorizo, cebolla caramelizada, salsas y queso mozzarella.",
+    precio: 21000,
     categoria: "Hamburguesas",
-    imagen: "https://images.unsplash.com/photo-1550547990-acda50142663?w=400&h=400&fit=crop",
-    etiqueta: "Promoción"
+    imagen: "https://i.imgur.com/UxN7d1g.jpeg",
+    etiqueta: null
   },
-
-  // SALCHIPAPAS
   {
     id: 5,
-    nombre: "Salchipapa Pequeña",
-    descripcion: "Papas fritas, salchicha y salsa de la casa",
-    precio: 10000,
-    categoria: "Salchipapas",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
+    nombre: "Burger Tradicional",
+    descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
+    precio: 19000,
+    categoria: "Hamburguesas",
+    imagen: "/images/burger-tradicional.jpg",
     etiqueta: null
   },
   {
     id: 6,
-    nombre: "Salchipapa Mediana",
-    descripcion: "Doble salchicha, papas crujientes y extra salsa",
-    precio: 14000,
-    categoria: "Salchipapas",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
+    nombre: "Burger de Pollo",
+    descripcion: "Pan, pechuga de pollo, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
+    precio: 19000,
+    categoria: "Hamburguesas",
+    imagen: "/images/burger-pollo.jpg",
     etiqueta: null
   },
   {
     id: 7,
-    nombre: "Salchipapa Monumental",
-    descripcion: "Triple salchicha, papas abundantes, queso y extra salsas",
-    precio: 18000,
-    categoria: "Salchipapas",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
-    etiqueta: "Más vendido"
-  },
-  {
-    id: 8,
-    nombre: "Salchipapa con Queso",
-    descripcion: "Papas fritas, salchicha, queso derretido y especias",
-    precio: 15000,
-    categoria: "Salchipapas",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
-    etiqueta: "Promoción"
+    nombre: "Burger Corralito",
+    descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, salsas, queso mozzarella y papas.",
+    precio: 16000,
+    categoria: "Hamburguesas",
+    imagen: "https://i.imgur.com/QfD5yK9.jpeg",
+    etiqueta: null
   },
 
-  // HOT DOGS
+  // ===========================
+  // PLATOS CON PAPAS
+  // ===========================
+  {
+    id: 8,
+    nombre: "SalchiRancheraPollo",
+    descripcion: "Papa, salchicha ranchera, pollo, lechuga, cebolla y salsas.",
+    precio: 19000,
+    categoria: "Platos con Papas",
+    imagen: "/images/salchirancherapollo.jpg",
+    etiqueta: "Nuevo"
+  },
   {
     id: 9,
-    nombre: "Hot Dog Clásico",
-    descripcion: "Salchicha de res, pan suave, mostaza y catsup",
-    precio: 8000,
-    categoria: "Hot Dogs",
-    imagen: "https://images.unsplash.com/photo-1495448642081-cd271dd59c44?w=400&h=400&fit=crop",
+    nombre: "Choripollo",
+    descripcion: "Papa, pollo, chorizo, lechuga, cebolla y salsas.",
+    precio: 19000,
+    categoria: "Platos con Papas",
+    imagen: "/images/choripollo.jpg",
     etiqueta: null
   },
   {
     id: 10,
-    nombre: "Hot Dog Especial",
-    descripcion: "Con queso, cebolla caramelizada y salsa casera",
-    precio: 11000,
-    categoria: "Hot Dogs",
-    imagen: "https://images.unsplash.com/photo-1495448642081-cd271dd59c44?w=400&h=400&fit=crop",
-    etiqueta: "Nuevo"
+    nombre: "Salchicarne",
+    descripcion: "Papa, salchicha, carne, lechuga, cebolla y salsas.",
+    precio: 17000,
+    categoria: "Platos con Papas",
+    imagen: "/images/salchicarne.jpg",
+    etiqueta: "Más vendido"
   },
   {
     id: 11,
-    nombre: "Hot Dog BBQ",
-    descripcion: "Salchicha, cebolla, queso cheddar y salsa BBQ",
-    precio: 13000,
-    categoria: "Hot Dogs",
-    imagen: "https://images.unsplash.com/photo-1495448642081-cd271dd59c44?w=400&h=400&fit=crop",
+    nombre: "Salchipollo",
+    descripcion: "Papa, salchicha, pollo, lechuga, cebolla y salsas.",
+    precio: 17000,
+    categoria: "Platos con Papas",
+    imagen: "/images/salchipollo.jpg",
     etiqueta: null
   },
   {
     id: 12,
-    nombre: "Hot Dog Completo",
-    descripcion: "Triple salchicha, queso, huevo, tocino y extra salsas",
-    precio: 14000,
-    categoria: "Hot Dogs",
-    imagen: "https://images.unsplash.com/photo-1495448642081-cd271dd59c44?w=400&h=400&fit=crop",
-    etiqueta: "Más vendido"
+    nombre: "SalchiRanchera",
+    descripcion: "Papa, salchicha ranchera, lechuga, cebolla y salsas.",
+    precio: 16000,
+    categoria: "Platos con Papas",
+    imagen: "/images/salchiranchera.jpg",
+    etiqueta: null
   },
-
-  // PATACONES
   {
     id: 13,
-    nombre: "Patacones Simples",
-    descripcion: "Plátanos maduros fritos con salsa de ajo",
-    precio: 9000,
-    categoria: "Patacones",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
+    nombre: "Salchipapa Trifásica",
+    descripcion: "Papa, salchicha, chorizo, butifarra, lechuga, cebolla y salsas.",
+    precio: 16000,
+    categoria: "Platos con Papas",
+    imagen: "/images/salchipapa-trifasica.jpg",
     etiqueta: null
   },
   {
     id: 14,
-    nombre: "Patacones con Guacamole",
-    descripcion: "Patacones crujientes acompañados de guacamole fresco",
-    precio: 12000,
-    categoria: "Patacones",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
-    etiqueta: "Nuevo"
+    nombre: "Choripapa",
+    descripcion: "Papa, chorizo, lechuga, cebolla y salsas.",
+    precio: 15000,
+    categoria: "Platos con Papas",
+    imagen: "/images/choripapa.jpg",
+    etiqueta: null
   },
   {
     id: 15,
-    nombre: "Patacones a la Salsa Roja",
-    descripcion: "Patacones con salsa roja picante y queso",
-    precio: 11000,
-    categoria: "Patacones",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
+    nombre: "Butipapa",
+    descripcion: "Papa, butifarra, lechuga, cebolla y salsas.",
+    precio: 13000,
+    categoria: "Platos con Papas",
+    imagen: "/images/butipapa.jpg",
     etiqueta: null
   },
   {
     id: 16,
-    nombre: "Patacones Monumental",
-    descripcion: "Doble porción con guacamole, salsa roja, queso y carne",
-    precio: 16000,
-    categoria: "Patacones",
-    imagen: "https://images.unsplash.com/photo-1599505090480-ff3a7dee3e8f?w=400&h=400&fit=crop",
-    etiqueta: "Más vendido"
+    nombre: "Salchipapa Sencilla",
+    descripcion: "Papa, salchicha, lechuga, cebolla y salsas.",
+    precio: 12000,
+    categoria: "Platos con Papas",
+    imagen: "https://i.imgur.com/wdJeKsN.png",
+    etiqueta: null
   },
 
-  // SALCHICARNE
+  // ===========================
+  // PICADAS
+  // ===========================
   {
     id: 17,
-    nombre: "Salchicarne Pequeña",
-    descripcion: "Carne molida con salchicha y salsa casera",
-    precio: 11000,
-    categoria: "Salchicarne",
-    imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop",
+    nombre: "Picada Personal",
+    descripcion: "Papa, carne, pollo, lechuga, cebolla, queso costeño y salsas.",
+    precio: 19000,
+    categoria: "Picadas",
+    imagen: "/images/picada-personal.jpg",
     etiqueta: null
   },
   {
     id: 18,
-    nombre: "Salchicarne Mediana",
-    descripcion: "Doble salchicha, carne y extra queso",
-    precio: 15000,
-    categoria: "Salchicarne",
-    imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop",
-    etiqueta: "Nuevo"
+    nombre: "Picada Pollo",
+    descripcion: "Papa, pollo, lechuga, cebolla, queso costeño y salsas.",
+    precio: 17000,
+    categoria: "Picadas",
+    imagen: "/images/picada-pollo.jpg",
+    etiqueta: null
   },
   {
     id: 19,
-    nombre: "Salchicarne Premium",
-    descripcion: "Triple salchicha, carne Angus, queso cheddar y tocino",
-    precio: 19000,
-    categoria: "Salchicarne",
-    imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop",
-    etiqueta: "Más vendido"
+    nombre: "Picada Carne",
+    descripcion: "Papa, carne, lechuga, cebolla, queso costeño y salsas.",
+    precio: 17000,
+    categoria: "Picadas",
+    imagen: "/images/picada-carne.jpg",
+    etiqueta: null
   },
   {
     id: 20,
-    nombre: "Salchicarne Explosiva",
-    descripcion: "Con huevo, queso doble, salsa picante y especias",
-    precio: 17000,
-    categoria: "Salchicarne",
-    imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop",
-    etiqueta: "Promoción"
+    nombre: "Picada para 8-9",
+    descripcion: "Picada familiar para 8 a 9 personas.",
+    precio: 92000,
+    categoria: "Picadas",
+    imagen: "/images/picada-8-9.jpg",
+    etiqueta: null
   },
-
-  // BEBIDAS
   {
     id: 21,
-    nombre: "Coca Cola",
-    descripcion: "Bebida gaseosa - 350ml",
-    precio: 3000,
-    categoria: "Bebidas",
-    imagen: "https://images.unsplash.com/photo-1554866585-c4db4e61e189?w=400&h=400&fit=crop",
+    nombre: "Picada para 5-6",
+    descripcion: "Picada familiar para 5 a 6 personas.",
+    precio: 59000,
+    categoria: "Picadas",
+    imagen: "/images/picada-5-6.jpg",
     etiqueta: null
   },
   {
     id: 22,
-    nombre: "Jugo Natural",
-    descripcion: "Jugo fresco de frutas naturales - 350ml",
-    precio: 4000,
-    categoria: "Bebidas",
-    imagen: "https://images.unsplash.com/photo-1600271886742-f049cd1f3033?w=400&h=400&fit=crop",
-    etiqueta: "Nuevo"
+    nombre: "Picada para 4",
+    descripcion: "Picada familiar para 4 personas.",
+    precio: 44000,
+    categoria: "Picadas",
+    imagen: "/images/picada-4.jpg",
+    etiqueta: null
   },
   {
     id: 23,
-    nombre: "Limonada Casera",
-    descripcion: "Limonada refrescante hecha en casa - 500ml",
-    precio: 4500,
-    categoria: "Bebidas",
-    imagen: "https://images.unsplash.com/photo-1600271886742-f049cd1f3033?w=400&h=400&fit=crop",
+    nombre: "Picada para 3-4",
+    descripcion: "Picada para compartir entre 3 y 4 personas.",
+    precio: 36000,
+    categoria: "Picadas",
+    imagen: "/images/picada-3-4.jpg",
     etiqueta: null
   },
   {
     id: 24,
-    nombre: "Cerveza Artesanal",
-    descripcion: "Cerveza artesanal fría - 355ml",
-    precio: 5000,
+    nombre: "Picada para 2",
+    descripcion: "Picada para compartir entre 2 personas.",
+    precio: 26000,
+    categoria: "Picadas",
+    imagen: "/images/picada-2.jpg",
+    etiqueta: null
+  },
+
+  // ===========================
+  // DESGRANADOS
+  // ===========================
+  {
+    id: 25,
+    nombre: "Combinado",
+    descripcion: "Papa, pollo, carne, res, cerdo, chorizo, butifarra, queso gratinado y maíz.",
+    precio: 44000,
+    categoria: "Desgranados",
+    imagen: "/images/combinado.jpg",
+    etiqueta: "Más vendido"
+  },
+  {
+    id: 26,
+    nombre: "Clásico Duo",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    precio: 36000,
+    categoria: "Desgranados",
+    imagen: "/images/clasico-duo.jpg",
+    etiqueta: null
+  },
+  {
+    id: 27,
+    nombre: "Clásico Nuevo",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    precio: 26000,
+    categoria: "Desgranados",
+    imagen: "/images/clasico-nuevo.jpg",
+    etiqueta: null
+  },
+  {
+    id: 28,
+    nombre: "Clásico Uno",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    precio: 24000,
+    categoria: "Desgranados",
+    imagen: "/images/clasico-uno.jpg",
+    etiqueta: null
+  },
+  {
+    id: 29,
+    nombre: "Ligero",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    precio: 21000,
+    categoria: "Desgranados",
+    imagen: "/images/ligero.jpg",
+    etiqueta: null
+  },
+
+  // ===========================
+  // HOT DOG
+  // ===========================
+  {
+    id: 30,
+    nombre: "Hot Dog Estrella",
+    descripcion: "Hot dog especial con múltiples ingredientes de la casa.",
+    precio: 18000,
+    categoria: "Hot Dogs",
+    imagen: "/images/hotdog-estrella.jpg",
+    etiqueta: "Especial"
+  },
+  {
+    id: 31,
+    nombre: "Hot Dog del Corralito",
+    descripcion: "Hot dog especial de la casa.",
+    precio: 16000,
+    categoria: "Hot Dogs",
+    imagen: "/images/hotdog-corralito.jpg",
+    etiqueta: null
+  },
+  {
+    id: 32,
+    nombre: "Hot Dog Hawaiano",
+    descripcion: "Con piña y queso mozzarella.",
+    precio: 13000,
+    categoria: "Hot Dogs",
+    imagen: "/images/hotdog-hawaiano.jpg",
+    etiqueta: null
+  },
+  {
+    id: 33,
+    nombre: "Hot Dog Callejerito",
+    descripcion: "Hot dog con papita ripio y salsas.",
+    precio: 14000,
+    categoria: "Hot Dogs",
+    imagen: "/images/hotdog-callejerito.jpg",
+    etiqueta: null
+  },
+  {
+    id: 34,
+    nombre: "Chori-Perro",
+    descripcion: "Hot dog con chorizo.",
+    precio: 13000,
+    categoria: "Hot Dogs",
+    imagen: "/images/chori-perro.jpg",
+    etiqueta: null
+  },
+  {
+    id: 35,
+    nombre: "Hot Dog Ranchero",
+    descripcion: "Con salchicha ranchera.",
+    precio: 14000,
+    categoria: "Hot Dogs",
+    imagen: "/images/hotdog-ranchero.jpg",
+    etiqueta: null
+  },
+  {
+    id: 36,
+    nombre: "Hot Dog Sencillo",
+    descripcion: "Hot dog clásico.",
+    precio: 11000,
+    categoria: "Hot Dogs",
+    imagen: "/images/hotdog-sencillo.jpg",
+    etiqueta: null
+  },
+  {
+    id: 37,
+    nombre: "Buti-Perro",
+    descripcion: "Hot dog con butifarra.",
+    precio: 11000,
+    categoria: "Hot Dogs",
+    imagen: "/images/buti-perro.jpg",
+    etiqueta: null
+  },
+  {
+    id: 38,
+    nombre: "Hot Dog Super Sencillo",
+    descripcion: "Hot dog sencillo con extras.",
+    precio: 9000,
+    categoria: "Hot Dogs",
+    imagen: "/images/hotdog-super-sencillo.jpg",
+    etiqueta: null
+  },
+
+  // ===========================
+  // PATACONES
+  // ===========================
+  {
+    id: 39,
+    nombre: "Patacón Relleno Especial",
+    descripcion: "Patacón con pollo, carne y queso.",
+    precio: 22500,
+    categoria: "Patacones",
+    imagen: "/images/patacon-especial.jpg",
+    etiqueta: "Recomendado"
+  },
+  {
+    id: 40,
+    nombre: "Patacón Relleno",
+    descripcion: "Patacón con pollo y carne.",
+    precio: 20500,
+    categoria: "Patacones",
+    imagen: "/images/patacon-relleno.jpg",
+    etiqueta: null
+  },
+  {
+    id: 41,
+    nombre: "Patacón Relleno Trifásico",
+    descripcion: "Patacón con pollo, carne y chorizo.",
+    precio: 18500,
+    categoria: "Patacones",
+    imagen: "/images/patacon-trifasico.jpg",
+    etiqueta: null
+  },
+
+  // ===========================
+  // SÁNDWICH
+  // ===========================
+  {
+    id: 42,
+    nombre: "Sándwich",
+    descripcion: "Disponible con diferentes proteínas. Con papas o sin papas.",
+    precio: 16000,
+    categoria: "Sándwich",
+    imagen: "/images/sandwich.jpg",
+    etiqueta: null
+  },
+
+  // ===========================
+  // JUGOS
+  // ===========================
+  {
+    id: 43,
+    nombre: "Jugo Natural 600ml",
+    descripcion: "Sabores: corozo, maracuyá y tomate de árbol.",
+    precio: 4000,
     categoria: "Bebidas",
-    imagen: "https://images.unsplash.com/photo-1608270861620-7a6c0b1e6e9f?w=400&h=400&fit=crop",
-    etiqueta: "Promoción"
+    imagen: "/images/jugos.jpg",
+    etiqueta: null
   }
 ];
