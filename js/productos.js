@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Archivo de datos de productos
  * Contiene todos los productos del restaurante El Corralito
  */
@@ -28,7 +28,7 @@ const PRODUCTOS = [
   {
     id: 3,
     nombre: "Burger Doble Carne Corralito",
-    descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, queso mozzarella, papa ripio.",
+    descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, salsas, queso mozzarella y papa ripio.",
     precio: 23000,
     categoria: "Hamburguesas",
     imagen: "/../img/burger-corralito.jpg",
@@ -77,7 +77,7 @@ const PRODUCTOS = [
   {
     id: 8,
     nombre: "SalchiRancheraPollo",
-    descripcion: "Papa, salchicha ranchera, pollo, lechuga, cebolla y salsas.",
+    descripcion: "Papa, salchicha ranchera, pollo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 19000,
     categoria: "Salchipapas",
     imagen: "/images/salchirancherapollo.jpg",
@@ -86,7 +86,7 @@ const PRODUCTOS = [
   {
     id: 9,
     nombre: "Choripollo",
-    descripcion: "Papa, pollo, chorizo, lechuga, cebolla y salsas.",
+    descripcion: "Papa, pollo, chorizo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 19000,
     categoria: "Salchipapas",
     imagen: "/images/choripollo.jpg",
@@ -95,7 +95,7 @@ const PRODUCTOS = [
   {
     id: 10,
     nombre: "Salchicarne",
-    descripcion: "Papa, salchicha, carne, lechuga, cebolla y salsas.",
+    descripcion: "Papa, salchicha, carne, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 17000,
     categoria: "Salchipapas",
     imagen: "/images/salchicarne.jpg",
@@ -104,7 +104,7 @@ const PRODUCTOS = [
   {
     id: 11,
     nombre: "Salchipollo",
-    descripcion: "Papa, salchicha, pollo, lechuga, cebolla y salsas.",
+    descripcion: "Papa, salchicha, pollo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 17000,
     categoria: "Salchipapas",
     imagen: "/images/salchipollo.jpg",
@@ -113,7 +113,7 @@ const PRODUCTOS = [
   {
     id: 12,
     nombre: "SalchiRanchera",
-    descripcion: "Papa, salchicha ranchera, lechuga, cebolla y salsas.",
+    descripcion: "Papa, salchicha ranchera, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 16000,
     categoria: "Salchipapas",
     imagen: "/images/salchiranchera.jpg",
@@ -122,7 +122,7 @@ const PRODUCTOS = [
   {
     id: 13,
     nombre: "Salchipapa Trifásica",
-    descripcion: "Papa, salchicha, chorizo, butifarra, lechuga, cebolla y salsas.",
+    descripcion: "Papa, salchicha, chorizo, butifarra, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 16000,
     categoria: "Salchipapas",
     imagen: "/images/salchipapa-trifasica.jpg",
@@ -131,7 +131,7 @@ const PRODUCTOS = [
   {
     id: 14,
     nombre: "Choripapa",
-    descripcion: "Papa, chorizo, lechuga, cebolla y salsas.",
+    descripcion: "Papa, chorizo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 15000,
     categoria: "Salchipapas",
     imagen: "/images/choripapa.jpg",
@@ -140,7 +140,7 @@ const PRODUCTOS = [
   {
     id: 15,
     nombre: "Butipapa",
-    descripcion: "Papa, butifarra, lechuga, cebolla y salsas.",
+    descripcion: "Papa, butifarra, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 13000,
     categoria: "Salchipapas",
     imagen: "/images/butipapa.jpg",
@@ -149,7 +149,7 @@ const PRODUCTOS = [
   {
     id: 16,
     nombre: "Salchipapa Sencilla",
-    descripcion: "Papa, salchicha, lechuga, cebolla y salsas.",
+    descripcion: "Papa, salchicha, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 12000,
     categoria: "Salchipapas",
     imagen: "https://i.imgur.com/wdJeKsN.png",
@@ -189,7 +189,7 @@ const PRODUCTOS = [
   {
     id: 20,
     nombre: "Picada para 8-9",
-    descripcion: "Picada familiar para 8 a 9 personas.",
+    descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 92000,
     categoria: "Picadas",
     imagen: "/images/picada-8-9.jpg",
@@ -198,7 +198,7 @@ const PRODUCTOS = [
   {
     id: 21,
     nombre: "Picada para 5-6",
-    descripcion: "Picada familiar para 5 a 6 personas.",
+    descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 59000,
     categoria: "Picadas",
     imagen: "/images/picada-5-6.jpg",
@@ -207,7 +207,7 @@ const PRODUCTOS = [
   {
     id: 22,
     nombre: "Picada para 4",
-    descripcion: "Picada familiar para 4 personas.",
+    descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 44000,
     categoria: "Picadas",
     imagen: "/images/picada-4.jpg",
@@ -216,7 +216,7 @@ const PRODUCTOS = [
   {
     id: 23,
     nombre: "Picada para 3-4",
-    descripcion: "Picada para compartir entre 3 y 4 personas.",
+    descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 36000,
     categoria: "Picadas",
     imagen: "/images/picada-3-4.jpg",
@@ -225,7 +225,7 @@ const PRODUCTOS = [
   {
     id: 24,
     nombre: "Picada para 2",
-    descripcion: "Picada para compartir entre 2 personas.",
+    descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso y salsas tártara y tomate. Piña opcional.",
     precio: 26000,
     categoria: "Picadas",
     imagen: "/images/picada-2.jpg",
@@ -238,7 +238,7 @@ const PRODUCTOS = [
   {
     id: 25,
     nombre: "Combinado",
-    descripcion: "Papa, pollo, carne, res, cerdo, chorizo, butifarra, queso gratinado y maíz.",
+    descripcion: "Papa, pollo, carne (res y cerdo), chorizo, butifarra, lechuga, tocineta, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 44000,
     categoria: "Desgranados",
     imagen: "/images/combinado.jpg",
@@ -247,7 +247,7 @@ const PRODUCTOS = [
   {
     id: 26,
     nombre: "Clásico Duo",
-    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
     precio: 36000,
     categoria: "Desgranados",
     imagen: "/images/clasico-duo.jpg",
@@ -256,7 +256,7 @@ const PRODUCTOS = [
   {
     id: 27,
     nombre: "Clásico Nuevo",
-    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
     precio: 26000,
     categoria: "Desgranados",
     imagen: "/images/clasico-nuevo.jpg",
@@ -265,7 +265,7 @@ const PRODUCTOS = [
   {
     id: 28,
     nombre: "Clásico Uno",
-    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 24000,
     categoria: "Desgranados",
     imagen: "/images/clasico-uno.jpg",
@@ -274,7 +274,7 @@ const PRODUCTOS = [
   {
     id: 29,
     nombre: "Ligero",
-    descripcion: "Papa, pollo, carne, chorizo, butifarra, queso gratinado y maíz.",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 21000,
     categoria: "Desgranados",
     imagen: "/images/ligero.jpg",
@@ -287,7 +287,7 @@ const PRODUCTOS = [
   {
     id: 30,
     nombre: "Hot Dog Estrella",
-    descripcion: "Hot dog especial con múltiples ingredientes de la casa.",
+    descripcion: "Papas, pan, salchicha, pollo, carne, tocineta, maíz, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 18000,
     categoria: "Hot Dogs",
     imagen: "/images/hotdog-estrella.jpg",
@@ -296,7 +296,7 @@ const PRODUCTOS = [
   {
     id: 31,
     nombre: "Hot Dog del Corralito",
-    descripcion: "Hot dog especial de la casa.",
+    descripcion: "Papas, pan, salchicha, pollo, carne, maíz, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 16000,
     categoria: "Hot Dogs",
     imagen: "/images/hotdog-corralito.jpg",
@@ -305,7 +305,7 @@ const PRODUCTOS = [
   {
     id: 32,
     nombre: "Hot Dog Hawaiano",
-    descripcion: "Con piña y queso mozzarella.",
+    descripcion: "Papas, pan, salchicha, lechuga, cebolla caramelizada, piña, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 13000,
     categoria: "Hot Dogs",
     imagen: "/images/hotdog-hawaiano.jpg",
@@ -314,7 +314,7 @@ const PRODUCTOS = [
   {
     id: 33,
     nombre: "Hot Dog Callejerito",
-    descripcion: "Hot dog con papita ripio y salsas.",
+    descripcion: "Papas, pan, salchicha, lechuga, cebolla caramelizada, queso mozzarella, tocineta, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 14000,
     categoria: "Hot Dogs",
     imagen: "/images/hotdog-callejerito.jpg",
@@ -323,43 +323,43 @@ const PRODUCTOS = [
   {
     id: 34,
     nombre: "Chori-Perro",
-    descripcion: "Hot dog con chorizo.",
+    descripcion: "Papas, pan, chorizo, lechuga, cebolla, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 13000,
     categoria: "Hot Dogs",
-    imagen: "/images/chori-perro.jpg",
+    imagen: "https://i.imgur.com/viIpkry.jpeg",
     etiqueta: null
   },
   {
     id: 35,
     nombre: "Hot Dog Ranchero",
-    descripcion: "Con salchicha ranchera.",
+    descripcion: "Papas, pan, salchicha ranchera, lechuga, cebolla, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 14000,
     categoria: "Hot Dogs",
-    imagen: "/images/hotdog-ranchero.jpg",
+    imagen: "https://i.imgur.com/viIpkry.jpeg",
     etiqueta: null
   },
   {
     id: 36,
     nombre: "Hot Dog Sencillo",
-    descripcion: "Hot dog clásico.",
+    descripcion: "Papas, pan, salchicha, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 11000,
     categoria: "Hot Dogs",
-    imagen: "/images/hotdog-sencillo.jpg",
+    imagen: "https://i.imgur.com/viIpkry.jpeg",
     etiqueta: null
   },
   {
     id: 37,
     nombre: "Buti-Perro",
-    descripcion: "Hot dog con butifarra.",
+    descripcion: "Papas, pan, butifarra, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 11000,
     categoria: "Hot Dogs",
-    imagen: "/images/buti-perro.jpg",
+    imagen: "https://i.imgur.com/viIpkry.jpeg",
     etiqueta: null
   },
   {
     id: 38,
     nombre: "Hot Dog Super Sencillo",
-    descripcion: "Hot dog sencillo con extras.",
+    descripcion: "Pan, salchicha, lechuga, cebolla, queso costeño, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 9000,
     categoria: "Hot Dogs",
     imagen: "/images/hotdog-super-sencillo.jpg",
@@ -371,8 +371,8 @@ const PRODUCTOS = [
   // ===========================
   {
     id: 39,
-    nombre: "Patacón Relleno Especial",
-    descripcion: "Patacón con pollo, carne y queso.",
+    nombre: "Patacón Relleno Especial #1",
+    descripcion: "Pollo, carne, chorizo, butifarra, tocineta, queso derretido con maíz, salsa tártara y papita ripio.",
     precio: 22500,
     categoria: "Patacones",
     imagen: "/images/patacon-especial.jpg",
@@ -380,8 +380,8 @@ const PRODUCTOS = [
   },
   {
     id: 40,
-    nombre: "Patacón Relleno",
-    descripcion: "Patacón con pollo y carne.",
+    nombre: "Patacón Relleno Especial #2",
+    descripcion: "Pollo, carne, chorizo, butifarra, queso derretido con maíz, salsa tártara y papita ripio.",
     precio: 20500,
     categoria: "Patacones",
     imagen: "/images/patacon-relleno.jpg",
@@ -390,7 +390,7 @@ const PRODUCTOS = [
   {
     id: 41,
     nombre: "Patacón Relleno Trifásico",
-    descripcion: "Patacón con pollo, carne y chorizo.",
+    descripcion: "Salchicha, chorizo, butifarra, queso costeño, salsa tártara y papita ripio.",
     precio: 18500,
     categoria: "Patacones",
     imagen: "/images/patacon-trifasico.jpg",
@@ -402,9 +402,19 @@ const PRODUCTOS = [
   // ===========================
   {
     id: 42,
-    nombre: "Sándwich",
-    descripcion: "Disponible con diferentes proteínas. Con papas o sin papas.",
+    nombre: "Sándwich sin papas",
+    descripcion: "Incluye lechuga, tomate, cebolla, jamón, queso mozzarella y salsa de la casa. Elige: salchicha ranchera y pollo; chorizo y pollo; butifarra y pollo; salchicha ranchera y carne; chorizo y carne; o butifarra y carne.",
     precio: 16000,
+    categoria: "Sándwich",
+    imagen: "/images/sandwich.jpg",
+    etiqueta: null
+  },
+
+  {
+    id: 43,
+    nombre: "Sándwich con papas",
+    descripcion: "Incluye lechuga, tomate, cebolla, jamón, queso mozzarella y salsa de la casa. Elige: salchicha ranchera y pollo; chorizo y pollo; butifarra y pollo; salchicha ranchera y carne; chorizo y carne; o butifarra y carne.",
+    precio: 18500,
     categoria: "Sándwich",
     imagen: "/images/sandwich.jpg",
     etiqueta: null
@@ -414,12 +424,41 @@ const PRODUCTOS = [
   // JUGOS
   // ===========================
   {
-    id: 43,
+    id: 44,
     nombre: "Jugo Natural 600ml",
     descripcion: "Sabores: corozo, maracuyá y tomate de árbol.",
     precio: 4000,
     categoria: "Bebidas",
     imagen: "/images/jugos.jpg",
     etiqueta: null
-  }
+  },
+
+  // ===========================
+  // ADICIONES
+  // ===========================
+  {
+    id: 45,
+    nombre: "Porción de papas sin queso",
+    descripcion: "Porción adicional de papas fritas crocantes.",
+    precio: 6000,
+    categoria: "Adiciones",
+    imagen: "/images/papas.jpg",
+    etiqueta: null
+  },
+  {
+    id: 46,
+    nombre: "Porción de papas con queso",
+    descripcion: "Porción adicional de papas fritas con queso.",
+    precio: 8000,
+    categoria: "Adiciones",
+    imagen: "/images/papas-con-queso.jpg",
+    etiqueta: null
+  },
+  { id: 47, nombre: "Queso gratinado personal", descripcion: "Adición.", precio: 6000, categoria: "Adiciones", imagen: "/images/queso-gratinado.jpg", etiqueta: null },
+  { id: 48, nombre: "Queso gratinado familiar", descripcion: "Adición.", precio: 10000, categoria: "Adiciones", imagen: "/images/queso-gratinado.jpg", etiqueta: null },
+  { id: 49, nombre: "Chorizo", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "/images/chorizo.jpg", etiqueta: null },
+  { id: 50, nombre: "Butifarra", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "/images/butifarra.jpg", etiqueta: null },
+  { id: 51, nombre: "Salchicha", descripcion: "Adición.", precio: 4000, categoria: "Adiciones", imagen: "/images/salchicha.jpg", etiqueta: null },
+  { id: 52, nombre: "Maíz", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "/images/maiz.jpg", etiqueta: null },
+  { id: 53, nombre: "Queso costeño", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "/images/queso-costeno.jpg", etiqueta: null }
 ];
