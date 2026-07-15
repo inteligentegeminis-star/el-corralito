@@ -3,7 +3,7 @@
  * Genera el mensaje del pedido y redirige a WhatsApp
  */
 
-const NUMERO_WHATSAPP = '573205206506'; // Reemplazar con tu número
+const NUMERO_WHATSAPP = '573225463698'; // Reemplazar con tu número
 
 class WhatsAppIntegracion {
   constructor(numeroWhatsApp = NUMERO_WHATSAPP) {
