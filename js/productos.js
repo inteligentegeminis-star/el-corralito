@@ -13,7 +13,7 @@ const PRODUCTOS = [
     descripcion: "Pan, carne de la casa, tocineta, jamón, butifarra, chorizo, pollo, tomate, cebolla, lechuga, salsas y queso mozzarella.",
     precio: 31000,
     categoria: "Hamburguesas",
-    imagen: "/images/burger-especial.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: "Más vendido"
   },
   {
@@ -22,7 +22,7 @@ const PRODUCTOS = [
     descripcion: "Pan, doble carne de la casa, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
     precio: 26000,
     categoria: "Hamburguesas",
-    imagen: "/images/burger-doble-carne.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -31,7 +31,7 @@ const PRODUCTOS = [
     descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, salsas, queso mozzarella y papa ripio.",
     precio: 23000,
     categoria: "Hamburguesas",
-    imagen: "/../img/burger-corralito.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -49,7 +49,7 @@ const PRODUCTOS = [
     descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
     precio: 19000,
     categoria: "Hamburguesas",
-    imagen: "/images/burger-tradicional.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -58,7 +58,7 @@ const PRODUCTOS = [
     descripcion: "Pan, pechuga de pollo, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
     precio: 19000,
     categoria: "Hamburguesas",
-    imagen: "/images/burger-pollo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -80,7 +80,7 @@ const PRODUCTOS = [
     descripcion: "Papa, salchicha ranchera, pollo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 19000,
     categoria: "Salchipapas",
-    imagen: "/images/salchirancherapollo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: "Nuevo"
   },
   {
@@ -89,7 +89,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, chorizo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 19000,
     categoria: "Salchipapas",
-    imagen: "/images/choripollo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -98,7 +98,7 @@ const PRODUCTOS = [
     descripcion: "Papa, salchicha, carne, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 17000,
     categoria: "Salchipapas",
-    imagen: "/images/salchicarne.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: "Más vendido"
   },
   {
@@ -107,7 +107,7 @@ const PRODUCTOS = [
     descripcion: "Papa, salchicha, pollo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 17000,
     categoria: "Salchipapas",
-    imagen: "/images/salchipollo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -116,7 +116,7 @@ const PRODUCTOS = [
     descripcion: "Papa, salchicha ranchera, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 16000,
     categoria: "Salchipapas",
-    imagen: "/images/salchiranchera.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -125,7 +125,7 @@ const PRODUCTOS = [
     descripcion: "Papa, salchicha, chorizo, butifarra, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 16000,
     categoria: "Salchipapas",
-    imagen: "/images/salchipapa-trifasica.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -134,7 +134,7 @@ const PRODUCTOS = [
     descripcion: "Papa, chorizo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 15000,
     categoria: "Salchipapas",
-    imagen: "/images/choripapa.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -143,7 +143,7 @@ const PRODUCTOS = [
     descripcion: "Papa, butifarra, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 13000,
     categoria: "Salchipapas",
-    imagen: "/images/butipapa.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -165,7 +165,7 @@ const PRODUCTOS = [
     descripcion: "Papa, carne, pollo, lechuga, cebolla, queso costeño y salsas.",
     precio: 19000,
     categoria: "Picadas",
-    imagen: "/images/picada-personal.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -174,7 +174,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, lechuga, cebolla, queso costeño y salsas.",
     precio: 17000,
     categoria: "Picadas",
-    imagen: "/images/picada-pollo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -183,7 +183,7 @@ const PRODUCTOS = [
     descripcion: "Papa, carne, lechuga, cebolla, queso costeño y salsas.",
     precio: 17000,
     categoria: "Picadas",
-    imagen: "/images/picada-carne.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -192,7 +192,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 92000,
     categoria: "Picadas",
-    imagen: "/images/picada-8-9.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -201,7 +201,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 59000,
     categoria: "Picadas",
-    imagen: "/images/picada-5-6.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -210,7 +210,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 44000,
     categoria: "Picadas",
-    imagen: "/images/picada-4.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -219,7 +219,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
     precio: 36000,
     categoria: "Picadas",
-    imagen: "/images/picada-3-4.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -228,7 +228,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso y salsas tártara y tomate. Piña opcional.",
     precio: 26000,
     categoria: "Picadas",
-    imagen: "/images/picada-2.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
 
@@ -241,7 +241,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne (res y cerdo), chorizo, butifarra, lechuga, tocineta, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 44000,
     categoria: "Desgranados",
-    imagen: "/images/combinado.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: "Más vendido"
   },
   {
@@ -250,7 +250,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
     precio: 36000,
     categoria: "Desgranados",
-    imagen: "/images/clasico-duo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -259,7 +259,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
     precio: 26000,
     categoria: "Desgranados",
-    imagen: "/images/clasico-nuevo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -268,7 +268,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 24000,
     categoria: "Desgranados",
-    imagen: "/images/clasico-uno.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -277,7 +277,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, chorizo, butifarra, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 21000,
     categoria: "Desgranados",
-    imagen: "/images/ligero.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
 
@@ -290,7 +290,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, pollo, carne, tocineta, maíz, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 18000,
     categoria: "Hot Dogs",
-    imagen: "/images/hotdog-estrella.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: "Especial"
   },
   {
@@ -299,7 +299,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, pollo, carne, maíz, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 16000,
     categoria: "Hot Dogs",
-    imagen: "/images/hotdog-corralito.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -308,7 +308,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, lechuga, cebolla caramelizada, piña, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 13000,
     categoria: "Hot Dogs",
-    imagen: "/images/hotdog-hawaiano.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -317,7 +317,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, lechuga, cebolla caramelizada, queso mozzarella, tocineta, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 14000,
     categoria: "Hot Dogs",
-    imagen: "/images/hotdog-callejerito.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -362,7 +362,7 @@ const PRODUCTOS = [
     descripcion: "Pan, salchicha, lechuga, cebolla, queso costeño, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 9000,
     categoria: "Hot Dogs",
-    imagen: "/images/hotdog-super-sencillo.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
 
@@ -375,7 +375,7 @@ const PRODUCTOS = [
     descripcion: "Pollo, carne, chorizo, butifarra, tocineta, queso derretido con maíz, salsa tártara y papita ripio.",
     precio: 22500,
     categoria: "Patacones",
-    imagen: "/images/patacon-especial.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: "Recomendado"
   },
   {
@@ -384,7 +384,7 @@ const PRODUCTOS = [
     descripcion: "Pollo, carne, chorizo, butifarra, queso derretido con maíz, salsa tártara y papita ripio.",
     precio: 20500,
     categoria: "Patacones",
-    imagen: "/images/patacon-relleno.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -393,7 +393,7 @@ const PRODUCTOS = [
     descripcion: "Salchicha, chorizo, butifarra, queso costeño, salsa tártara y papita ripio.",
     precio: 18500,
     categoria: "Patacones",
-    imagen: "/images/patacon-trifasico.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
 
@@ -406,7 +406,7 @@ const PRODUCTOS = [
     descripcion: "Incluye lechuga, tomate, cebolla, jamón, queso mozzarella y salsa de la casa. Elige: salchicha ranchera y pollo; chorizo y pollo; butifarra y pollo; salchicha ranchera y carne; chorizo y carne; o butifarra y carne.",
     precio: 16000,
     categoria: "Sándwich",
-    imagen: "/images/sandwich.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
 
@@ -416,7 +416,7 @@ const PRODUCTOS = [
     descripcion: "Incluye lechuga, tomate, cebolla, jamón, queso mozzarella y salsa de la casa. Elige: salchicha ranchera y pollo; chorizo y pollo; butifarra y pollo; salchicha ranchera y carne; chorizo y carne; o butifarra y carne.",
     precio: 18500,
     categoria: "Sándwich",
-    imagen: "/images/sandwich.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
 
@@ -429,7 +429,7 @@ const PRODUCTOS = [
     descripcion: "Sabores: corozo, maracuyá y tomate de árbol.",
     precio: 4000,
     categoria: "Bebidas",
-    imagen: "/images/jugos.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
 
@@ -442,7 +442,7 @@ const PRODUCTOS = [
     descripcion: "Porción adicional de papas fritas crocantes.",
     precio: 6000,
     categoria: "Adiciones",
-    imagen: "/images/papas.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
   {
@@ -451,14 +451,14 @@ const PRODUCTOS = [
     descripcion: "Porción adicional de papas fritas con queso.",
     precio: 8000,
     categoria: "Adiciones",
-    imagen: "/images/papas-con-queso.jpg",
+    imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
-  { id: 47, nombre: "Queso gratinado personal", descripcion: "Adición.", precio: 6000, categoria: "Adiciones", imagen: "/images/queso-gratinado.jpg", etiqueta: null },
-  { id: 48, nombre: "Queso gratinado familiar", descripcion: "Adición.", precio: 10000, categoria: "Adiciones", imagen: "/images/queso-gratinado.jpg", etiqueta: null },
-  { id: 49, nombre: "Chorizo", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "/images/chorizo.jpg", etiqueta: null },
-  { id: 50, nombre: "Butifarra", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "/images/butifarra.jpg", etiqueta: null },
-  { id: 51, nombre: "Salchicha", descripcion: "Adición.", precio: 4000, categoria: "Adiciones", imagen: "/images/salchicha.jpg", etiqueta: null },
-  { id: 52, nombre: "Maíz", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "/images/maiz.jpg", etiqueta: null },
-  { id: 53, nombre: "Queso costeño", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "/images/queso-costeno.jpg", etiqueta: null }
+  { id: 47, nombre: "Queso gratinado personal", descripcion: "Adición.", precio: 6000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 48, nombre: "Queso gratinado familiar", descripcion: "Adición.", precio: 10000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 49, nombre: "Chorizo", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 50, nombre: "Butifarra", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 51, nombre: "Salchicha", descripcion: "Adición.", precio: 4000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 52, nombre: "Maíz", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 53, nombre: "Queso costeño", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null }
 ];
