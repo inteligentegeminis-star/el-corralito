@@ -72,14 +72,14 @@ const PRODUCTOS = [
   },
 
   // ===========================
-  // PLATOS CON PAPAS
+  // SALCHIPAPAS
   // ===========================
   {
     id: 8,
     nombre: "SalchiRancheraPollo",
     descripcion: "Papa, salchicha ranchera, pollo, lechuga, cebolla y salsas.",
     precio: 19000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/salchirancherapollo.jpg",
     etiqueta: "Nuevo"
   },
@@ -88,7 +88,7 @@ const PRODUCTOS = [
     nombre: "Choripollo",
     descripcion: "Papa, pollo, chorizo, lechuga, cebolla y salsas.",
     precio: 19000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/choripollo.jpg",
     etiqueta: null
   },
@@ -97,7 +97,7 @@ const PRODUCTOS = [
     nombre: "Salchicarne",
     descripcion: "Papa, salchicha, carne, lechuga, cebolla y salsas.",
     precio: 17000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/salchicarne.jpg",
     etiqueta: "Más vendido"
   },
@@ -106,7 +106,7 @@ const PRODUCTOS = [
     nombre: "Salchipollo",
     descripcion: "Papa, salchicha, pollo, lechuga, cebolla y salsas.",
     precio: 17000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/salchipollo.jpg",
     etiqueta: null
   },
@@ -115,7 +115,7 @@ const PRODUCTOS = [
     nombre: "SalchiRanchera",
     descripcion: "Papa, salchicha ranchera, lechuga, cebolla y salsas.",
     precio: 16000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/salchiranchera.jpg",
     etiqueta: null
   },
@@ -124,7 +124,7 @@ const PRODUCTOS = [
     nombre: "Salchipapa Trifásica",
     descripcion: "Papa, salchicha, chorizo, butifarra, lechuga, cebolla y salsas.",
     precio: 16000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/salchipapa-trifasica.jpg",
     etiqueta: null
   },
@@ -133,7 +133,7 @@ const PRODUCTOS = [
     nombre: "Choripapa",
     descripcion: "Papa, chorizo, lechuga, cebolla y salsas.",
     precio: 15000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/choripapa.jpg",
     etiqueta: null
   },
@@ -142,7 +142,7 @@ const PRODUCTOS = [
     nombre: "Butipapa",
     descripcion: "Papa, butifarra, lechuga, cebolla y salsas.",
     precio: 13000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "/images/butipapa.jpg",
     etiqueta: null
   },
@@ -151,7 +151,7 @@ const PRODUCTOS = [
     nombre: "Salchipapa Sencilla",
     descripcion: "Papa, salchicha, lechuga, cebolla y salsas.",
     precio: 12000,
-    categoria: "Platos con Papas",
+    categoria: "Salchipapas",
     imagen: "https://i.imgur.com/wdJeKsN.png",
     etiqueta: null
   },

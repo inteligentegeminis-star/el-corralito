@@ -140,7 +140,17 @@ header {
 }
 
 .logo-icon {
-  font-size: 2rem;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.logo-icon + span {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Navegación */
