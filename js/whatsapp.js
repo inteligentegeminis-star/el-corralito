@@ -112,6 +112,64 @@ class WhatsAppIntegracion {
 
     return { exito: true, mensaje: 'Pedido enviado a WhatsApp' };
   }
+  generarMensajePedido(datos) {
+    const { items, total, cliente } = datos;
+    let mensaje = 'EL CORRALITO\n\n';
+    mensaje += 'Pedido:\n';
+    items.forEach(item => {
+      mensaje += `${item.cantidad}x ${item.nombre} - $${(item.precio * item.cantidad).toLocaleString('es-CO')}\n`;
+    });
+    mensaje += `\nTOTAL: $${total.toLocaleString('es-CO')}\n\n`;
+    mensaje += 'DATOS DE ENTREGA\n';
+    mensaje += `Nombre: ${cliente.nombre}\n`;
+    mensaje += `Modalidad: ${cliente.tipoEntrega}\n`;
+    if (cliente.tipoEntrega === 'Domicilio') {
+      mensaje += `Direccion: ${cliente.direccion}\n`;
+      mensaje += `Referencia: ${cliente.referencia}\n`;
+    }
+    mensaje += `Contacto: ${cliente.telefono}\n`;
+    mensaje += `Pago: ${cliente.metodoPago}\n`;
+    if (cliente.observaciones) mensaje += `Observaciones: ${cliente.observaciones}\n`;
+    mensaje += '\nGracias por tu pedido.';
+    return mensaje;
+  }
+
+  validarFormulario(cliente) {
+    const nombre = cliente.nombre?.trim();
+    const telefono = cliente.telefono?.trim();
+    const tipoEntrega = cliente.tipoEntrega?.trim();
+    const metodoPago = cliente.metodoPago?.trim();
+
+    if (!nombre || nombre.length < 3) return { valido: false, mensaje: 'Ingresa un nombre valido' };
+    if (!['Recoger en el local', 'Domicilio', 'Comer en el restaurante'].includes(tipoEntrega)) return { valido: false, mensaje: 'Selecciona como recibiras el pedido' };
+    if (tipoEntrega === 'Domicilio' && (!cliente.direccion?.trim() || !cliente.referencia?.trim())) return { valido: false, mensaje: 'Ingresa la direccion y un lugar de referencia' };
+    if (!telefono || telefono.length < 7) return { valido: false, mensaje: 'Ingresa un contacto valido' };
+    if (!['Efectivo', 'Transferencia'].includes(metodoPago)) return { valido: false, mensaje: 'Selecciona un metodo de pago' };
+    return { valido: true };
+  }
+
+  procesarPedido(cliente) {
+    if (!this.verificarCarritoNoVacio()) return { exito: false, mensaje: 'Tu carrito esta vacio' };
+    const validacion = this.validarFormulario(cliente);
+    if (!validacion.valido) return { exito: false, mensaje: validacion.mensaje };
+
+    const { items, total } = carrito.obtenerDatos();
+    this.enviarPedido({
+      items,
+      total,
+      cliente: {
+        nombre: cliente.nombre.trim(),
+        telefono: cliente.telefono.trim(),
+        tipoEntrega: cliente.tipoEntrega,
+        direccion: cliente.direccion?.trim() || '',
+        referencia: cliente.referencia?.trim() || '',
+        metodoPago: cliente.metodoPago,
+        observaciones: cliente.observaciones?.trim() || ''
+      }
+    });
+    carrito.vaciarCarrito();
+    return { exito: true, mensaje: 'Pedido enviado a WhatsApp' };
+  }
 }
 
 // Crear instancia global

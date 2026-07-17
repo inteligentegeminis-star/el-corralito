@@ -62,6 +62,27 @@ class App {
       });
     }
 
+    // Formulario de pedido superpuesto
+    const formularioPedidoModal = document.getElementById('formulario');
+    const cerrarFormulario = document.getElementById('cerrar-formulario');
+    document.querySelectorAll('a[href="#formulario"]').forEach(enlace => {
+      enlace.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.abrirFormularioPedido();
+      });
+    });
+
+    if (cerrarFormulario) cerrarFormulario.addEventListener('click', () => this.cerrarFormularioPedido());
+    if (formularioPedidoModal) {
+      formularioPedidoModal.addEventListener('click', (e) => {
+        if (e.target === formularioPedidoModal) this.cerrarFormularioPedido();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') this.cerrarFormularioPedido();
+    });
+
     // Búsqueda en tiempo real
     const buscador = document.getElementById('buscador');
     if (buscador) {
@@ -84,11 +105,77 @@ class App {
     // Formulario de pedido
     const formPedido = document.getElementById('form-pedido');
     if (formPedido) {
+      this.configurarFlujoFormulario(formPedido);
       formPedido.addEventListener('submit', (e) => {
         e.preventDefault();
         this.procesarPedido(formPedido);
       });
     }
+  }
+
+  configurarFlujoFormulario(form) {
+    const nombre = form.elements.nombre;
+    const tipoEntrega = form.elements.tipoEntrega;
+    const direccion = form.elements.direccion;
+    const referencia = form.elements.referencia;
+    const telefono = form.elements.telefono;
+    const metodoPago = form.elements.metodoPago;
+    const pasos = {
+      entrega: document.getElementById('paso-tipo-entrega'),
+      domicilio: document.getElementById('paso-domicilio'),
+      contacto: document.getElementById('paso-contacto'),
+      pago: document.getElementById('paso-pago'),
+      final: document.getElementById('paso-final')
+    };
+
+    const mostrar = (paso, controles, visible) => {
+      pasos[paso].hidden = !visible;
+      controles.forEach(control => { control.disabled = !visible; });
+    };
+
+    const actualizar = () => {
+      const nombreValido = nombre.value.trim().length >= 3;
+      mostrar('entrega', [tipoEntrega], nombreValido);
+
+      const hayEntrega = nombreValido && tipoEntrega.value;
+      const esDomicilio = tipoEntrega.value === 'Domicilio';
+      mostrar('domicilio', [direccion, referencia], hayEntrega && esDomicilio);
+      direccion.required = esDomicilio;
+      referencia.required = esDomicilio;
+
+      const domicilioCompleto = direccion.value.trim().length >= 5 && referencia.value.trim().length >= 3;
+      const mostrarContacto = hayEntrega && (!esDomicilio || domicilioCompleto);
+      mostrar('contacto', [telefono], mostrarContacto);
+
+      const mostrarPago = mostrarContacto && telefono.value.trim().length >= 7;
+      mostrar('pago', [metodoPago], mostrarPago);
+
+      const mostrarFinal = mostrarPago && metodoPago.value !== '';
+      pasos.final.hidden = !mostrarFinal;
+    };
+
+    [nombre, tipoEntrega, direccion, referencia, telefono, metodoPago].forEach(control => {
+      control.addEventListener(control.tagName === 'SELECT' ? 'change' : 'input', actualizar);
+    });
+
+    form.addEventListener('reset', () => setTimeout(actualizar, 0));
+    actualizar();
+  }
+
+  abrirFormularioPedido() {
+    const formulario = document.getElementById('formulario');
+    if (!formulario) return;
+    formulario.classList.add('activo');
+    formulario.setAttribute('aria-hidden', 'false');
+    document.getElementById('carrito-lateral')?.classList.remove('activo');
+    document.getElementById('nombre')?.focus();
+  }
+
+  cerrarFormularioPedido() {
+    const formulario = document.getElementById('formulario');
+    if (!formulario) return;
+    formulario.classList.remove('activo');
+    formulario.setAttribute('aria-hidden', 'true');
   }
 
   cargarProductos(productosAMostrar = PRODUCTOS) {
@@ -194,8 +281,10 @@ class App {
     const datos = {
       nombre: form.nombre.value,
       telefono: form.telefono.value,
-      barrio: form.barrio.value,
       direccion: form.direccion.value,
+      referencia: form.referencia.value,
+      tipoEntrega: form.tipoEntrega.value,
+      metodoPago: form.metodoPago.value,
       observaciones: form.observaciones.value
     };
 
@@ -203,6 +292,7 @@ class App {
 
     if (resultado.exito) {
       form.reset();
+      this.cerrarFormularioPedido();
       this.mostrarNotificacion(resultado.mensaje, 'exito');
     } else {
       this.mostrarNotificacion(resultado.mensaje, 'error');
