@@ -604,6 +604,51 @@ form .btn {
   justify-content: center;
 }
 
+/* Formulario de pedido superpuesto */
+#formulario {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  z-index: 1000;
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: calc(100vh - 80px);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  background: var(--color-fondo);
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.18);
+  transform: translateX(100%);
+  transition: transform var(--transicion);
+}
+
+#formulario.activo {
+  transform: translateX(0);
+}
+
+.formulario-dialog {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  padding: 2.5rem 2rem 2rem;
+  background: var(--color-fondo);
+}
+
+.cerrar-formulario {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-primario);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 /* Modal */
 .modal-detalle {
   display: none;
@@ -824,6 +869,12 @@ footer {
     max-width: 100%;
   }
 
+  #formulario {
+    top: 70px;
+    max-width: 100%;
+    height: calc(100vh - 70px);
+  }
+
   .modal-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -890,4 +941,28 @@ footer {
   .notificacion.mostrar {
     transform: translateY(0);
   }
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+  background: #fff;
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+
+.paso-formulario {
+  animation: mostrar-paso 0.25s ease-out;
+}
+
+@keyframes mostrar-paso {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -114,10 +114,13 @@
     </section>
 
     <!-- Formulario de Pedido -->
-    <section class="container" id="formulario">
-      <h2>Completa tu Pedido</h2>
+    <section class="container" id="formulario" aria-hidden="true">
+      <div class="formulario-dialog" role="dialog" aria-modal="true" aria-labelledby="titulo-formulario">
+        <button type="button" id="cerrar-formulario" class="cerrar-formulario" aria-label="Cerrar formulario">&times;</button>
+      <h2 id="titulo-formulario">Completa tu Pedido</h2>
       
       <form id="form-pedido">
+        <!--
         <div class="form-group">
           <label for="nombre">Nombre Completo *</label>
           <input type="text" id="nombre" name="nombre" required>
@@ -146,7 +149,50 @@
         <button type="submit" class="btn btn-primario btn-grande">
           📲 Enviar Pedido por WhatsApp
         </button>
+        -->
+        <div class="form-group">
+          <label for="nombre">Nombre de quien recibe *</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" minlength="3" required>
+        </div>
+
+        <div class="form-group paso-formulario" id="paso-tipo-entrega" hidden>
+          <label for="tipo-entrega">&iquest;C&oacute;mo recibir&aacute; el pedido? *</label>
+          <select id="tipo-entrega" name="tipoEntrega" required disabled>
+            <option value="">Selecciona una opci&oacute;n</option>
+            <option value="Recoger en el local">Recoger en el local</option>
+            <option value="Domicilio">Domicilio</option>
+            <option value="Comer en el restaurante">Comer en el restaurante</option>
+          </select>
+        </div>
+
+        <div class="form-group paso-formulario" id="paso-domicilio" hidden>
+          <label for="direccion">Direcci&oacute;n de entrega *</label>
+          <input type="text" id="direccion" name="direccion" autocomplete="street-address" disabled>
+          <label for="referencia">Lugar de referencia *</label>
+          <input type="text" id="referencia" name="referencia" placeholder="Ej.: casa azul frente al parque" disabled>
+        </div>
+
+        <div class="form-group paso-formulario" id="paso-contacto" hidden>
+          <label for="telefono">Contacto de quien recibe *</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" minlength="7" disabled>
+        </div>
+
+        <div class="form-group paso-formulario" id="paso-pago" hidden>
+          <label for="metodo-pago">&iquest;C&oacute;mo desea pagar? *</label>
+          <select id="metodo-pago" name="metodoPago" required disabled>
+            <option value="">Selecciona una opci&oacute;n</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Transferencia">Transferencia</option>
+          </select>
+        </div>
+
+        <div class="form-group paso-formulario" id="paso-final" hidden>
+          <label for="observaciones">Observaciones (opcional)</label>
+          <textarea id="observaciones" name="observaciones" placeholder="Sin cebolla, extra queso, sin mayonesa, etc."></textarea>
+          <button type="submit" class="btn btn-primario btn-grande">Enviar pedido por WhatsApp</button>
+        </div>
       </form>
+      </div>
     </section>
   </main>
 
