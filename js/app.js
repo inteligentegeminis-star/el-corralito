@@ -65,12 +65,9 @@ class App {
     // Formulario de pedido superpuesto
     const formularioPedidoModal = document.getElementById('formulario');
     const cerrarFormulario = document.getElementById('cerrar-formulario');
-    document.querySelectorAll('a[href="#formulario"]').forEach(enlace => {
-      enlace.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.abrirFormularioPedido();
-      });
-    });
+    const btnHacerPedido = document.getElementById('btn-hacer-pedido');
+    if (btnHacerPedido) btnHacerPedido.addEventListener('click', () => this.abrirFormularioPedido());
+    if (window.location.hash === '#formulario') setTimeout(() => this.abrirFormularioPedido(), 0);
 
     if (cerrarFormulario) cerrarFormulario.addEventListener('click', () => this.cerrarFormularioPedido());
     if (formularioPedidoModal) {
