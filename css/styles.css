@@ -278,6 +278,8 @@ section > h2 {
   transition: all var(--transicion);
 }
 
+.menu-principal { padding-top: 2rem; }
+
 #buscador:focus {
   outline: none;
   border-color: var(--color-acento);
@@ -1035,6 +1037,17 @@ header {
   border-radius: 50%;
   right: -7rem;
   bottom: -14rem;
+}
+
+.hero-inicio {
+  background:
+    linear-gradient(90deg, rgba(3, 25, 16, 0.9) 0%, rgba(3, 25, 16, 0.68) 55%, rgba(3, 25, 16, 0.42) 100%),
+    url('../img/restaurante-el-corralito.png') center 48% / cover no-repeat;
+}
+
+.hero-inicio .hero-contenido {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
