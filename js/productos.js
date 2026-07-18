@@ -13,7 +13,7 @@ const PRODUCTOS = [
     descripcion: "Pan, carne de la casa, tocineta, jamón, butifarra, chorizo, pollo, tomate, cebolla, lechuga, salsas y queso mozzarella.",
     precio: 31000,
     categoria: "Hamburguesas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/1If7cFs.png",
     etiqueta: "Más vendido"
   },
   {
@@ -22,7 +22,7 @@ const PRODUCTOS = [
     descripcion: "Pan, doble carne de la casa, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
     precio: 26000,
     categoria: "Hamburguesas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/4YcX6YR.png",
     etiqueta: null
   },
   {
@@ -31,7 +31,7 @@ const PRODUCTOS = [
     descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, salsas, queso mozzarella y papa ripio.",
     precio: 23000,
     categoria: "Hamburguesas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/4He8Z8t.png",
     etiqueta: null
   },
   {
@@ -49,7 +49,7 @@ const PRODUCTOS = [
     descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
     precio: 19000,
     categoria: "Hamburguesas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/5XEIxqx.png",
     etiqueta: null
   },
   {
