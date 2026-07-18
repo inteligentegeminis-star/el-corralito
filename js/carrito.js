@@ -139,10 +139,7 @@ class Carrito {
     toast.textContent = mensaje;
     document.body.appendChild(toast);
 
-    setTimeout(() => {
-      toast.classList.add('mostrar');
-    }, 10);
-
+    setTimeout(() => toast.classList.add('mostrar'), 10);
     setTimeout(() => {
       toast.classList.remove('mostrar');
       setTimeout(() => toast.remove(), 300);
@@ -150,13 +147,8 @@ class Carrito {
   }
 
   obtenerDatos() {
-    return {
-      items: this.items,
-      total: this.obtenerTotal(),
-      cantidad: this.obtenerCantidadTotal()
-    };
+    return { items: this.items, total: this.obtenerTotal(), cantidad: this.obtenerCantidadTotal() };
   }
 }
 
-// Crear instancia global del carrito
 const carrito = new Carrito();
