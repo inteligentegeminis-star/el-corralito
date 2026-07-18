@@ -58,7 +58,7 @@ const PRODUCTOS = [
     descripcion: "Pan, pechuga de pollo, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
     precio: 19000,
     categoria: "Hamburguesas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/zVCrDl4.png",
     etiqueta: null
   },
   {
