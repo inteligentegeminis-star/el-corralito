@@ -11,7 +11,7 @@ const PRODUCTOS = [
     id: 1,
     nombre: "Burger Especial",
     descripcion: "Pan, carne de la casa, tocineta, jamón, butifarra, chorizo, pollo, tomate, cebolla, lechuga, salsas y queso mozzarella.",
-    precio: 31000,
+    precio: 32000,
     categoria: "Hamburguesas",
     imagen: "https://i.imgur.com/1If7cFs.png",
     etiqueta: "Más vendido"
@@ -27,9 +27,9 @@ const PRODUCTOS = [
   },
   {
     id: 3,
-    nombre: "Burger Doble Carne Corralito",
-    descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, salsas, queso mozzarella y papa ripio.",
-    precio: 23000,
+    nombre: "Burger Mista",
+    descripcion: "Pan, carne de la casa, Pechga, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
+    precio: 26000,
     categoria: "Hamburguesas",
     imagen: "https://i.imgur.com/4He8Z8t.png",
     etiqueta: null
@@ -38,7 +38,7 @@ const PRODUCTOS = [
     id: 4,
     nombre: "Burger Mix",
     descripcion: "Pan, carne de la casa, tocineta, butifarra, chorizo, cebolla caramelizada, salsas y queso mozzarella.",
-    precio: 21000,
+    precio: 23000,
     categoria: "Hamburguesas",
     imagen: "https://i.imgur.com/UxN7d1g.jpeg",
     etiqueta: null
@@ -47,7 +47,7 @@ const PRODUCTOS = [
     id: 5,
     nombre: "Burger Tradicional",
     descripcion: "Pan, carne de la casa, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
-    precio: 19000,
+    precio: 20000,
     categoria: "Hamburguesas",
     imagen: "https://i.imgur.com/5XEIxqx.png",
     etiqueta: null
@@ -56,7 +56,7 @@ const PRODUCTOS = [
     id: 6,
     nombre: "Burger de Pollo",
     descripcion: "Pan, pechuga de pollo, tocineta, cebolla caramelizada, lechuga, tomate, salsas y queso mozzarella.",
-    precio: 19000,
+    precio: 20000,
     categoria: "Hamburguesas",
     imagen: "https://i.imgur.com/zVCrDl4.png",
     etiqueta: null
@@ -78,7 +78,7 @@ const PRODUCTOS = [
     id: 8,
     nombre: "SalchiRancheraPollo",
     descripcion: "Papa, salchicha ranchera, pollo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
-    precio: 19000,
+    precio: 20000,
     categoria: "Salchipapas",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: "Nuevo"
@@ -149,7 +149,7 @@ const PRODUCTOS = [
   {
     id: 16,
     nombre: "Salchipapa Sencilla",
-    descripcion: "Papa, salchicha, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
+    descripcion: "Papa, salchicha, lechuga, cebolla, queso costeño y salsas tártara y tomate. Piña opcional.",
     precio: 12000,
     categoria: "Salchipapas",
     imagen: "https://i.imgur.com/wdJeKsN.png",
@@ -190,7 +190,7 @@ const PRODUCTOS = [
     id: 20,
     nombre: "Picada para 8-9",
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
-    precio: 92000,
+    precio: 94000,
     categoria: "Picadas",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
@@ -199,7 +199,7 @@ const PRODUCTOS = [
     id: 21,
     nombre: "Picada para 5-6",
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
-    precio: 59000,
+    precio: 60000,
     categoria: "Picadas",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
@@ -208,7 +208,7 @@ const PRODUCTOS = [
     id: 22,
     nombre: "Picada para 4",
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
-    precio: 44000,
+    precio: 46000,
     categoria: "Picadas",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
@@ -217,7 +217,7 @@ const PRODUCTOS = [
     id: 23,
     nombre: "Picada para 3-4",
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso, maíz, papa ripio y salsas tártara y tomate. Piña opcional.",
-    precio: 36000,
+    precio: 38000,
     categoria: "Picadas",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
@@ -226,7 +226,7 @@ const PRODUCTOS = [
     id: 24,
     nombre: "Picada para 2",
     descripcion: "Papa, pollo, carne, salchicha, chorizo, butifarra, lechuga, cebolla, queso y salsas tártara y tomate. Piña opcional.",
-    precio: 26000,
+    precio: 27000,
     categoria: "Picadas",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
@@ -234,21 +234,13 @@ const PRODUCTOS = [
 
   // ===========================
   // DESGRANADOS
+  // Se elimina el combinado
   // ===========================
-  {
-    id: 25,
-    nombre: "Combinado",
-    descripcion: "Papa, pollo, carne (res y cerdo), chorizo, butifarra, lechuga, tocineta, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
-    precio: 44000,
-    categoria: "Desgranados",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
-    etiqueta: "Más vendido"
-  },
   {
     id: 26,
     nombre: "Clásico Duo",
     descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
-    precio: 36000,
+    precio: 38000,
     categoria: "Desgranados",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
@@ -257,7 +249,7 @@ const PRODUCTOS = [
     id: 27,
     nombre: "Clásico Nuevo",
     descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
-    precio: 26000,
+    precio: 28000,
     categoria: "Desgranados",
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
@@ -426,7 +418,7 @@ const PRODUCTOS = [
   {
     id: 44,
     nombre: "Jugo Natural 600ml",
-    descripcion: "Sabores: corozo, maracuyá y tomate de árbol.",
+    descripcion: "Sabores: corozo, maracuyá, lulo y avena.",
     precio: 4000,
     categoria: "Bebidas",
     imagen: "https://i.imgur.com/qsRPSCS.png",
@@ -454,11 +446,11 @@ const PRODUCTOS = [
     imagen: "https://i.imgur.com/qsRPSCS.png",
     etiqueta: null
   },
-  { id: 47, nombre: "Queso gratinado personal", descripcion: "Adición.", precio: 6000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
-  { id: 48, nombre: "Queso gratinado familiar", descripcion: "Adición.", precio: 10000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
-  { id: 49, nombre: "Chorizo", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
-  { id: 50, nombre: "Butifarra", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
-  { id: 51, nombre: "Salchicha", descripcion: "Adición.", precio: 4000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 47, nombre: "Queso gratinado personal", descripcion: "Adición.", precio: 7000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 48, nombre: "Queso gratinado familiar", descripcion: "Adición.", precio: 11500, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 49, nombre: "Chorizo", descripcion: "Adición.", precio: 6000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 50, nombre: "Butifarra", descripcion: "Adición.", precio: 6000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
+  { id: 51, nombre: "Salchicha", descripcion: "Adición.", precio: 5000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
   { id: 52, nombre: "Maíz", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null },
-  { id: 53, nombre: "Queso costeño", descripcion: "Adición.", precio: 3000, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null }
+  { id: 53, nombre: "Queso costeño", descripcion: "Adición.", precio: 3500, categoria: "Adiciones", imagen: "https://i.imgur.com/qsRPSCS.png", etiqueta: null }
 ];
