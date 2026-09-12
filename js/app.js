@@ -13,7 +13,18 @@ class App {
 
   inicializar() {
     this.configurarEventos();
-    this.cargarProductos();
+    const categoriaURL = new URLSearchParams(window.location.search).get('categoria');
+    const categoriaValida = PRODUCTOS.some(producto => producto.categoria === categoriaURL);
+
+    if (categoriaURL && categoriaValida) {
+      this.filtrarPorCategoria(categoriaURL);
+      return;
+    }
+
+    const destacados = [1, 8, 30, 39];
+    this.cargarProductos(document.body.dataset.pagina === 'inicio'
+      ? PRODUCTOS.filter(producto => destacados.includes(producto.id))
+      : PRODUCTOS);
   }
 
   configurarEventos() {
@@ -25,6 +36,7 @@ class App {
       btnMenuMobile.addEventListener('click', () => {
         navMenu.classList.toggle('activo');
         btnMenuMobile.classList.toggle('activo');
+        btnMenuMobile.setAttribute('aria-expanded', navMenu.classList.contains('activo'));
       });
     }
 
@@ -34,6 +46,7 @@ class App {
       enlace.addEventListener('click', () => {
         navMenu?.classList.remove('activo');
         btnMenuMobile?.classList.remove('activo');
+        btnMenuMobile?.setAttribute('aria-expanded', 'false');
       });
     });
 
@@ -45,12 +58,14 @@ class App {
     if (btnCarrito && carritoLateral) {
       btnCarrito.addEventListener('click', () => {
         carritoLateral.classList.toggle('activo');
+        btnCarrito.setAttribute('aria-expanded', carritoLateral.classList.contains('activo'));
       });
     }
 
     if (cerrarCarrito && carritoLateral) {
       cerrarCarrito.addEventListener('click', () => {
         carritoLateral.classList.remove('activo');
+        btnCarrito?.setAttribute('aria-expanded', 'false');
       });
     }
 
@@ -59,6 +74,7 @@ class App {
       carritoLateral.addEventListener('click', (e) => {
         if (e.target === carritoLateral) {
           carritoLateral.classList.remove('activo');
+          btnCarrito?.setAttribute('aria-expanded', 'false');
         }
       });
     }
@@ -166,6 +182,7 @@ class App {
     formulario.classList.add('activo');
     formulario.setAttribute('aria-hidden', 'false');
     document.getElementById('carrito-lateral')?.classList.remove('activo');
+    document.getElementById('btn-carrito')?.setAttribute('aria-expanded', 'false');
     document.getElementById('nombre')?.focus();
   }
 
@@ -186,6 +203,7 @@ class App {
     if (productosAMostrar.length === 0) {
       contenedor.innerHTML = '<p class="sin-resultados">No se encontraron productos</p>';
       contenedor.setAttribute('aria-busy', 'false');
+      this.actualizarContador(0);
       return;
     }
 
@@ -220,6 +238,13 @@ class App {
 
     this.activarLazyLoading(contenedor);
     contenedor.setAttribute('aria-busy', 'false');
+    this.actualizarContador(productosAMostrar.length);
+  }
+
+  actualizarContador(cantidad) {
+    const contador = document.getElementById('contador-productos');
+    if (!contador) return;
+    contador.textContent = cantidad === 1 ? '1 producto disponible' : `${cantidad} productos disponibles`;
   }
 
   activarLazyLoading(contenedor) {
@@ -262,6 +287,9 @@ class App {
 
   filtrarPorCategoria(categoria) {
     this.categoriaActual = categoria;
+    document.querySelectorAll('[data-categoria]').forEach(btn => {
+      btn.classList.toggle('activo', btn.dataset.categoria === categoria);
+    });
     
     if (categoria === 'Todos') {
       this.productosFiltrados = [...PRODUCTOS];
