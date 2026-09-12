@@ -242,7 +242,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
     precio: 38000,
     categoria: "Desgranados",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/oOLDiRc.png",
     etiqueta: null
   },
   {
@@ -269,7 +269,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, chorizo, butifarra, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 21000,
     categoria: "Desgranados",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/rDuweGP.png",
     etiqueta: null
   },
 
@@ -291,7 +291,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, pollo, carne, maíz, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 16000,
     categoria: "Hot Dogs",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/kCHrZGw.png",
     etiqueta: null
   },
   {
@@ -367,7 +367,7 @@ const PRODUCTOS = [
     descripcion: "Pollo, carne, chorizo, butifarra, tocineta, queso derretido con maíz, salsa tártara y papita ripio.",
     precio: 22500,
     categoria: "Patacones",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/O9Mhjgw.jpeg",
     etiqueta: "Recomendado"
   },
   {
@@ -408,7 +408,7 @@ const PRODUCTOS = [
     descripcion: "Incluye lechuga, tomate, cebolla, jamón, queso mozzarella y salsa de la casa. Elige: salchicha ranchera y pollo; chorizo y pollo; butifarra y pollo; salchicha ranchera y carne; chorizo y carne; o butifarra y carne.",
     precio: 18500,
     categoria: "Sándwich",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/SmlIzjt.png",
     etiqueta: null
   },
 

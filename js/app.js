@@ -21,7 +21,7 @@ class App {
       return;
     }
 
-    const destacados = [1, 8, 30, 39];
+    const destacados = [16, 26, 29, 31, 39, 43];
     this.cargarProductos(document.body.dataset.pagina === 'inicio'
       ? PRODUCTOS.filter(producto => destacados.includes(producto.id))
       : PRODUCTOS);
