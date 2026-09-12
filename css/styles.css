@@ -1652,3 +1652,37 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .categoria-patacones { background: linear-gradient(145deg, #303030, #686868); }
 .social-inicio { background: linear-gradient(120deg, #111, #363636); }
 .social-inicio .seccion-eyebrow { color: #d8d8d8; }
+
+/* Encabezado y panel del carrito alineados en móvil. */
+@media (max-width: 768px) {
+  header { padding: 0.75rem 0; }
+
+  .header-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px 44px;
+    gap: 0.6rem;
+    min-height: 46px;
+  }
+
+  #nav-menu { top: 70px; }
+  #btn-carrito { grid-column: 2; grid-row: 1; }
+  #btn-menu-mobile {
+    grid-column: 3;
+    grid-row: 1;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  #carrito-lateral {
+    top: 70px;
+    height: calc(100dvh - 70px);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .logo span { display: none; }
+}
