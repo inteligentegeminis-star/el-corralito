@@ -4,17 +4,17 @@
  */
 
 :root {
-  --color-primario: #082b1e;
-  --color-secundario: #c7f36b;
-  --color-acento: #f97316;
-  --color-fondo: #f7fbf7;
-  --color-texto: #13281e;
-  --color-gris: #edf5ef;
-  --color-gris-claro: #e3eee6;
-  --color-borde: #d7e6da;
-  --sombra-suave: 0 8px 24px rgba(8, 43, 30, 0.08);
-  --sombra-media: 0 14px 32px rgba(8, 43, 30, 0.14);
-  --sombra-fuerte: 0 24px 48px rgba(8, 43, 30, 0.2);
+  --color-primario: #161616;
+  --color-secundario: #c4c4c4;
+  --color-acento: #242424;
+  --color-fondo: #f6f6f6;
+  --color-texto: #1f1f1f;
+  --color-gris: #ededed;
+  --color-gris-claro: #e1e1e1;
+  --color-borde: #d4d4d4;
+  --sombra-suave: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --sombra-media: 0 14px 32px rgba(0, 0, 0, 0.14);
+  --sombra-fuerte: 0 24px 48px rgba(0, 0, 0, 0.2);
   --radio: 16px;
   --radio-grande: 24px;
   --transicion: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1174,6 +1174,128 @@ section > h2 {
 @media (prefers-reduced-motion: reduce) {
   .skeleton { animation: none; }
 }
+
+/* Menú: lectura rápida y controles cómodos */
+#nav-menu a[aria-current="page"] {
+  color: var(--color-secundario);
+  opacity: 1;
+}
+
+#nav-menu a[aria-current="page"]::after {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 0.25rem auto 0;
+  border-radius: 99px;
+  background: var(--color-secundario);
+}
+
+.menu-principal { padding-top: clamp(2.25rem, 5vw, 4rem); }
+
+.menu-encabezado {
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.menu-eyebrow {
+  margin-bottom: 0.4rem;
+  color: #d85f0c;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.menu-encabezado h1 {
+  margin-bottom: 0.7rem;
+  color: var(--color-primario);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  letter-spacing: -0.05em;
+}
+
+.menu-encabezado p:last-child { color: #607568; }
+
+.buscador-container {
+  max-width: 620px;
+  margin: 0 auto 1.25rem;
+}
+
+.buscador-container label {
+  margin: 0 0 0.55rem 0.2rem;
+  color: var(--color-primario);
+  font-size: 0.9rem;
+}
+
+#buscador {
+  max-width: none;
+  min-height: 54px;
+  padding-left: 1.2rem;
+}
+
+.contador-productos {
+  min-height: 1.4rem;
+  margin: 0.6rem 0 0 0.2rem;
+  color: #607568;
+  font-size: 0.84rem;
+}
+
+.filtros {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0 -0.25rem 2.25rem;
+  padding: 0.25rem;
+  scrollbar-width: none;
+}
+
+.filtros::-webkit-scrollbar { display: none; }
+.filtro-btn { flex: 0 0 auto; min-height: 44px; }
+
+.producto-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.producto-descripcion {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.producto-footer { margin-top: auto; padding-top: 0.45rem; }
+.producto-acciones { align-items: stretch; }
+.producto-acciones .btn { min-height: 42px; }
+.producto-acciones .btn-secundario { min-width: 42px; }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.5);
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  #contenedor-productos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+  .producto-imagen { height: 150px; }
+  .producto-body { padding: 1rem; }
+  .producto-nombre { font-size: 1rem; }
+  .producto-descripcion { min-height: 0; font-size: 0.78rem; -webkit-line-clamp: 3; }
+  .producto-footer { align-items: flex-start; flex-direction: column; gap: 0.65rem; }
+  .producto-precio { font-size: 1.15rem; }
+  .producto-acciones { width: 100%; }
+  .producto-acciones .btn { padding: 8px; }
+}
 .producto-body { padding: 1.35rem; }
 .producto-nombre { color: var(--color-primario); letter-spacing: -0.02em; }
 .producto-descripcion { color: #607568; }
@@ -1293,3 +1415,240 @@ input, textarea, select {
   .espacio-imagen { min-height: 320px; }
   .espacio-contenido { padding: 0; }
 }
+
+/* Ajustes finales para las tarjetas compactas en teléfonos. */
+@media (max-width: 560px) {
+  .producto-body { padding: 1rem; }
+}
+
+/* Identidad visual: azul profundo, superficies claras y acentos cálidos. */
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(171, 202, 232, 0.34), transparent 25rem),
+    var(--color-fondo);
+}
+
+header {
+  background: linear-gradient(115deg, #102a43, #1b3d61);
+  border-bottom-color: rgba(240, 180, 77, 0.22);
+}
+
+.logo { color: #fff; }
+.logo-icon { box-shadow: 0 5px 15px rgba(5, 20, 35, 0.3); }
+#badge-carrito { box-shadow: 0 3px 10px rgba(201, 88, 61, 0.42); }
+
+.hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(108, 173, 220, 0.36), transparent 19rem),
+    radial-gradient(circle at 10% 90%, rgba(240, 180, 77, 0.18), transparent 20rem),
+    linear-gradient(125deg, #0b2239, #163b5f 58%, #22547a);
+}
+
+.hero::after { border-color: rgba(240, 180, 77, 0.28); }
+
+.hero-inicio {
+  background:
+    linear-gradient(90deg, rgba(8, 29, 49, 0.94) 0%, rgba(10, 35, 58, 0.74) 55%, rgba(11, 43, 69, 0.46) 100%),
+    url('../img/restaurante-el-corralito.png') center 48% / cover no-repeat;
+}
+
+.btn-primario {
+  background: linear-gradient(135deg, #cf674b, #b94932);
+  box-shadow: 0 10px 20px rgba(185, 73, 50, 0.24);
+}
+
+.btn-primario:hover {
+  background: linear-gradient(135deg, #dc795d, #c04c35);
+  box-shadow: 0 14px 26px rgba(185, 73, 50, 0.32);
+}
+
+.filtro-btn {
+  border-color: #d8e2ed;
+  background: rgba(255, 255, 255, 0.86);
+  color: #24425e;
+}
+
+.filtro-btn:hover { border-color: #6d91b5; color: #16324f; }
+.filtro-btn.activo { border-color: #16324f; background: #16324f; }
+
+#buscador,
+input,
+textarea,
+select { border-color: #d8e2ed; }
+
+#buscador:focus {
+  border-color: rgba(201, 88, 61, 0.76);
+  box-shadow: 0 0 0 4px rgba(201, 88, 61, 0.13);
+}
+
+.menu-eyebrow,
+.espacio-eyebrow,
+.producto-precio { color: #b94c34; }
+.menu-encabezado p:last-child,
+.contador-productos,
+.producto-descripcion,
+.espacio-contenido > p:not(.espacio-eyebrow) { color: #597086; }
+
+.producto-card {
+  border-color: rgba(22, 50, 79, 0.1);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.producto-imagen { background: #dbe8f3; }
+.skeleton { background: linear-gradient(90deg, #dbe8f3 25%, #edf4fa 50%, #dbe8f3 75%); background-size: 200% 100%; }
+.etiqueta { box-shadow: 0 5px 12px rgba(22, 50, 79, 0.17); }
+
+footer {
+  background: linear-gradient(135deg, #0b2239, #163a5c);
+  border-top-color: rgba(240, 180, 77, 0.18);
+}
+
+#carrito-lateral,
+#formulario,
+.formulario-dialog { background: #fbfcfe; }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible { outline-color: rgba(201, 88, 61, 0.54); }
+
+/* Identidad El Corralito: negro vegetal y verde naturaleza. */
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(199, 215, 106, 0.19), transparent 25rem),
+    var(--color-fondo);
+}
+
+header { background: linear-gradient(115deg, #0b1711, #183a2a); border-bottom-color: rgba(199, 215, 106, 0.2); }
+.hero { background: radial-gradient(circle at 82% 18%, rgba(89, 143, 94, 0.38), transparent 19rem), radial-gradient(circle at 10% 90%, rgba(199, 215, 106, 0.17), transparent 20rem), linear-gradient(125deg, #09130d, #143725 58%, #225339); }
+.hero::after { border-color: rgba(199, 215, 106, 0.25); }
+.hero-inicio { background: linear-gradient(90deg, rgba(5, 17, 10, 0.94) 0%, rgba(10, 33, 21, 0.75) 55%, rgba(20, 57, 37, 0.46) 100%), url('../img/restaurante-el-corralito.png') center 48% / cover no-repeat; }
+
+.btn-primario { background: linear-gradient(135deg, #dd7548, #bd4b2e); box-shadow: 0 10px 20px rgba(189, 75, 46, 0.25); }
+.btn-primario:hover { background: linear-gradient(135deg, #e98960, #c95838); box-shadow: 0 14px 26px rgba(189, 75, 46, 0.32); }
+
+.filtro-btn { border-color: #d5e1d4; color: #234936; }
+.filtro-btn:hover { border-color: #719b76; color: #102a20; }
+.filtro-btn.activo { border-color: #102a20; background: #102a20; }
+#buscador, input, textarea, select { border-color: #d5e1d4; }
+#buscador:focus { border-color: rgba(212, 101, 56, 0.76); box-shadow: 0 0 0 4px rgba(212, 101, 56, 0.13); }
+
+.menu-eyebrow, .espacio-eyebrow, .producto-precio, .seccion-eyebrow { color: #b84f2f; }
+.menu-encabezado p:last-child, .contador-productos, .producto-descripcion, .espacio-contenido > p:not(.espacio-eyebrow) { color: #5b7161; }
+.producto-card { border-color: rgba(16, 42, 32, 0.1); }
+.producto-imagen { background: #dce8d9; }
+.skeleton { background: linear-gradient(90deg, #dce8d9 25%, #edf4ea 50%, #dce8d9 75%); background-size: 200% 100%; }
+.etiqueta { box-shadow: 0 5px 12px rgba(16, 42, 32, 0.17); }
+footer { background: linear-gradient(135deg, #09150e, #173826); border-top-color: rgba(199, 215, 106, 0.17); }
+#carrito-lateral, #formulario, .formulario-dialog { background: #fbfdf9; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline-color: rgba(212, 101, 56, 0.55); }
+
+/* Inicio: categorías y comunidad. */
+.seccion-encabezado {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.seccion-encabezado h2 { margin: 0; text-align: left; }
+.seccion-eyebrow { margin-bottom: 0.3rem; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; }
+.enlace-ver-menu { flex: 0 0 auto; color: #234936; font-weight: 700; }
+.enlace-ver-menu span { margin-left: 0.3rem; transition: transform var(--transicion); }
+.enlace-ver-menu:hover span { display: inline-block; transform: translateX(4px); }
+
+.categoria-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.categoria-destacada {
+  min-height: 175px;
+  padding: 1.35rem;
+  border: 1px solid rgba(16, 42, 32, 0.1);
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+.categoria-destacada:hover { color: #fff; transform: translateY(-5px); box-shadow: var(--sombra-media); }
+.categoria-destacada strong, .categoria-destacada span { display: block; }
+.categoria-icono { margin-bottom: 1.5rem; font-size: 1.65rem; }
+.categoria-destacada strong { margin-bottom: 0.25rem; font-size: 1.08rem; }
+.categoria-destacada span:last-child { color: rgba(255,255,255,0.82); font-size: 0.8rem; }
+.categoria-destacada b { float: right; font-size: 1.05rem; }
+.categoria-hamburguesas { background: linear-gradient(145deg, #173826, #295d3b); }
+.categoria-salchipapas { background: linear-gradient(145deg, #26311e, #52632f); }
+.categoria-perros { background: linear-gradient(145deg, #182f26, #35644b); }
+.categoria-patacones { background: linear-gradient(145deg, #473823, #79602d); }
+
+.social-inicio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 24px;
+  background: linear-gradient(120deg, #102a20, #1d4a33);
+  box-shadow: var(--sombra-media);
+}
+.social-inicio h2 { margin-bottom: 0.8rem; color: #fff; text-align: left; }
+.social-inicio-texto > p:last-child { color: rgba(255,255,255,0.78); }
+.social-inicio .seccion-eyebrow { color: #d9e789; }
+.social-enlaces { display: grid; gap: 0.8rem; }
+.social-enlace { display: grid; grid-template-columns: 42px 1fr; column-gap: 0.8rem; align-items: center; padding: 0.9rem 1rem; border: 1px solid rgba(255,255,255,0.17); border-radius: 14px; background: rgba(255,255,255,0.08); color: #fff; }
+.social-enlace:hover { color: #fff; background: rgba(255,255,255,0.15); }
+.social-enlace > span { grid-row: span 2; display: grid; width: 42px; height: 42px; place-items: center; border-radius: 12px; background: rgba(255,255,255,0.16); font-size: 1.4rem; font-weight: 800; }
+.social-enlace small { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 820px) {
+  .categoria-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .social-inicio { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .seccion-encabezado { align-items: start; flex-direction: column; }
+  .categoria-grid { gap: 0.75rem; }
+  .categoria-destacada { min-height: 150px; padding: 1rem; }
+  .categoria-icono { margin-bottom: 1rem; }
+}
+
+/* Tema monocromático: negro, grafito y escalas de gris. */
+body { background: linear-gradient(135deg, #fafafa, #f1f1f1); }
+header { background: linear-gradient(115deg, #080808, #242424); border-bottom-color: rgba(255, 255, 255, 0.16); }
+.logo { color: #fff; }
+
+.hero { background: radial-gradient(circle at 80% 15%, rgba(125, 125, 125, 0.35), transparent 20rem), linear-gradient(125deg, #080808, #202020 60%, #414141); }
+.hero::after { border-color: rgba(255, 255, 255, 0.2); }
+.hero-inicio { background: linear-gradient(90deg, rgba(0, 0, 0, 0.94), rgba(18, 18, 18, 0.75) 55%, rgba(40, 40, 40, 0.45)), url('../img/restaurante-el-corralito.png') center 48% / cover no-repeat; }
+
+.btn-primario { background: linear-gradient(135deg, #303030, #101010); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); }
+.btn-primario:hover { background: linear-gradient(135deg, #4a4a4a, #222); box-shadow: 0 14px 26px rgba(0, 0, 0, 0.32); }
+
+#btn-carrito { border-color: rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.1); }
+.icono-carrito { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#badge-carrito { background: #e8e8e8; color: #111; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35); }
+
+.filtro-btn { border-color: #d0d0d0; color: #292929; background: rgba(255, 255, 255, 0.88); }
+.filtro-btn:hover { border-color: #777; color: #000; }
+.filtro-btn.activo { border-color: #161616; background: #161616; }
+#buscador, input, textarea, select { border-color: #d0d0d0; }
+#buscador:focus { border-color: #333; box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.11); }
+
+.menu-eyebrow, .espacio-eyebrow, .producto-precio, .seccion-eyebrow { color: #3e3e3e; }
+.menu-encabezado p:last-child, .contador-productos, .producto-descripcion, .espacio-contenido > p:not(.espacio-eyebrow) { color: #696969; }
+.enlace-ver-menu { color: #242424; }
+.producto-card { border-color: rgba(0, 0, 0, 0.1); background: rgba(255, 255, 255, 0.95); }
+.producto-imagen { background: #dedede; }
+.skeleton { background: linear-gradient(90deg, #dedede 25%, #f0f0f0 50%, #dedede 75%); background-size: 200% 100%; }
+.etiqueta { box-shadow: 0 5px 12px rgba(0, 0, 0, 0.16); }
+
+footer { background: linear-gradient(135deg, #090909, #292929); border-top-color: rgba(255, 255, 255, 0.14); }
+#carrito-lateral, #formulario, .formulario-dialog { background: #fafafa; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline-color: rgba(0, 0, 0, 0.45); }
+
+.categoria-destacada { border-color: rgba(0, 0, 0, 0.16); }
+.categoria-hamburguesas { background: linear-gradient(145deg, #111, #383838); }
+.categoria-salchipapas { background: linear-gradient(145deg, #252525, #535353); }
+.categoria-perros { background: linear-gradient(145deg, #171717, #454545); }
+.categoria-patacones { background: linear-gradient(145deg, #303030, #686868); }
+.social-inicio { background: linear-gradient(120deg, #111, #363636); }
+.social-inicio .seccion-eyebrow { color: #d8d8d8; }
