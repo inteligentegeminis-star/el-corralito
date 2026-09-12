@@ -7,6 +7,7 @@ class App {
   constructor() {
     this.productosFiltrados = [...PRODUCTOS];
     this.categoriaActual = 'Todos';
+    this.observadorImagenes = null;
     this.inicializar();
   }
 
@@ -179,15 +180,21 @@ class App {
     const contenedor = document.getElementById('contenedor-productos');
     if (!contenedor) return;
 
+    // Evita que un observador anterior conserve tarjetas que ya no se muestran.
+    this.observadorImagenes?.disconnect();
+
     if (productosAMostrar.length === 0) {
       contenedor.innerHTML = '<p class="sin-resultados">No se encontraron productos</p>';
+      contenedor.setAttribute('aria-busy', 'false');
       return;
     }
 
+    contenedor.setAttribute('aria-busy', 'true');
     contenedor.innerHTML = productosAMostrar.map(producto => `
       <article class="producto-card">
         <div class="producto-imagen">
-          <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
+          <span class="skeleton skeleton-imagen" aria-hidden="true"></span>
+          <img class="producto-imagen-lazy" data-src="${producto.imagen}" alt="${producto.nombre}" width="400" height="220" decoding="async">
           ${producto.etiqueta ? `<span class="etiqueta etiqueta-${producto.etiqueta.toLowerCase()}">${producto.etiqueta}</span>` : ''}
         </div>
         <div class="producto-body">
@@ -210,6 +217,37 @@ class App {
         </div>
       </article>
     `).join('');
+
+    this.activarLazyLoading(contenedor);
+    contenedor.setAttribute('aria-busy', 'false');
+  }
+
+  activarLazyLoading(contenedor) {
+    const imagenes = contenedor.querySelectorAll('.producto-imagen-lazy[data-src]');
+    const cargarImagen = (imagen) => {
+      if (!imagen.dataset.src) return;
+
+      const finalizarCarga = () => imagen.classList.add('cargada');
+      imagen.addEventListener('load', finalizarCarga, { once: true });
+      imagen.addEventListener('error', finalizarCarga, { once: true });
+      imagen.src = imagen.dataset.src;
+      imagen.removeAttribute('data-src');
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      imagenes.forEach(cargarImagen);
+      return;
+    }
+
+    this.observadorImagenes = new IntersectionObserver((entradas, observador) => {
+      entradas.forEach(entrada => {
+        if (!entrada.isIntersecting) return;
+        cargarImagen(entrada.target);
+        observador.unobserve(entrada.target);
+      });
+    }, { rootMargin: '300px 0px' });
+
+    imagenes.forEach(imagen => this.observadorImagenes.observe(imagen));
   }
 
   filtrarPorBusqueda(termino) {
