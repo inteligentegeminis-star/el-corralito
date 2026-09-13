@@ -257,7 +257,7 @@ const PRODUCTOS = [
   {
     id: 28,
     nombre: "Clásico Uno",
-    descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 24000,
     categoria: "Desgranados",
     imagen: "https://i.imgur.com/qsRPSCS.png",
@@ -398,7 +398,7 @@ const PRODUCTOS = [
     descripcion: "Incluye lechuga, tomate, cebolla, jamón, queso mozzarella y salsa de la casa. Elige: salchicha ranchera y pollo; chorizo y pollo; butifarra y pollo; salchicha ranchera y carne; chorizo y carne; o butifarra y carne.",
     precio: 16000,
     categoria: "Sándwich",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/4sDQjG8.jpeg",
     etiqueta: null
   },
 
@@ -417,11 +417,11 @@ const PRODUCTOS = [
   // ===========================
   {
     id: 44,
-    nombre: "Jugo Natural 600ml",
+    nombre: "Jugo Natural 400ml",
     descripcion: "Sabores: corozo, maracuyá, lulo y avena.",
     precio: 4000,
     categoria: "Bebidas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/an0p9hI.png",
     etiqueta: null
   },
 
