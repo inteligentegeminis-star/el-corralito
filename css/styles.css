@@ -1686,3 +1686,19 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 390px) {
   .logo span { display: none; }
 }
+
+/* En pantallas táctiles, “Agregar” es la acción principal y el detalle no se confunde. */
+.producto-acciones .btn-ver-detalle { flex: 0 0 44px; width: 44px; padding: 8px; }
+.producto-acciones .btn-primario { flex: 1; }
+.producto-card-interactiva { cursor: pointer; }
+.producto-card-interactiva:focus-visible { outline: 3px solid rgba(0, 0, 0, 0.45); outline-offset: 3px; }
+.producto-card-interactiva .producto-acciones { cursor: default; }
+
+@media (hover: none) {
+  .producto-card:hover {
+    transform: none;
+    box-shadow: var(--sombra-suave);
+  }
+
+  .producto-card:hover .producto-imagen img { transform: none; }
+}

@@ -282,7 +282,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, pollo, carne, tocineta, maíz, lechuga, cebolla caramelizada, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 18000,
     categoria: "Hot Dogs",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/xOjxYED.png",
     etiqueta: "Especial"
   },
   {
@@ -300,7 +300,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, lechuga, cebolla caramelizada, piña, queso mozzarella, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 13000,
     categoria: "Hot Dogs",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/lOJ6S2t.png",
     etiqueta: null
   },
   {
@@ -309,7 +309,7 @@ const PRODUCTOS = [
     descripcion: "Papas, pan, salchicha, lechuga, cebolla caramelizada, queso mozzarella, tocineta, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 14000,
     categoria: "Hot Dogs",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/X7ewbNT.png",
     etiqueta: null
   },
   {
@@ -354,7 +354,7 @@ const PRODUCTOS = [
     descripcion: "Pan, salchicha, lechuga, cebolla, queso costeño, papa ripio y salsas tártara, BBQ y tomate. Piña opcional.",
     precio: 9000,
     categoria: "Hot Dogs",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/dZZkZs9.png",
     etiqueta: null
   },
 
