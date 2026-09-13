@@ -251,7 +251,7 @@ const PRODUCTOS = [
     descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz maduro y salsas tártara y tomate. Piña opcional.",
     precio: 28000,
     categoria: "Desgranados",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/Fj70nve.jpeg",
     etiqueta: null
   },
   {
