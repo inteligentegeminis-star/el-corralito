@@ -152,7 +152,7 @@ class App {
       mostrar('entrega', [tipoEntrega], nombreValido);
 
       const hayEntrega = nombreValido && tipoEntrega.value;
-      const esDomicilio = tipoEntrega.value === 'Domicilio';
+      const esDomicilio = tipoEntrega.value === 'domicilio';
       mostrar('domicilio', [direccion, referencia], hayEntrega && esDomicilio);
       direccion.required = esDomicilio;
       referencia.required = esDomicilio;
@@ -365,7 +365,7 @@ class App {
       return;
     }
 
-    const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+    const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value || window.turnstile?.getResponse?.() || '';
     if (!turnstileToken) {
       this.mostrarNotificacion('Completa la verificación de seguridad antes de enviar el pedido', 'error');
       return;
@@ -379,14 +379,17 @@ class App {
       botonEnviar.setAttribute('aria-busy', 'true');
     }
 
+    const tipoEntrega = (form.tipoEntrega.value || '').toLowerCase();
+    const metodoPago = (form.metodoPago.value || '').toLowerCase();
+
     const datosPedido = {
       cliente: {
         nombre: form.nombre.value.trim(),
         telefono: form.telefono.value.trim(),
         direccion: form.direccion.value.trim(),
         referencia: form.referencia.value.trim(),
-        tipoEntrega: form.tipoEntrega.value.toLowerCase(),
-        metodoPago: form.metodoPago.value.toLowerCase(),
+        tipoEntrega,
+        metodoPago,
         observaciones: form.observaciones.value.trim()
       },
       productos: carrito.items.map(item => ({
