@@ -359,25 +359,70 @@ class App {
     });
   }
 
-  procesarPedido(form) {
-    const datos = {
-      nombre: form.nombre.value,
-      telefono: form.telefono.value,
-      direccion: form.direccion.value,
-      referencia: form.referencia.value,
-      tipoEntrega: form.tipoEntrega.value,
-      metodoPago: form.metodoPago.value,
-      observaciones: form.observaciones.value
+  async procesarPedido(form) {
+    if (carrito.obtenerCantidadTotal() === 0) {
+      this.mostrarNotificacion('Tu carrito está vacío', 'error');
+      return;
+    }
+
+    const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+    if (!turnstileToken) {
+      this.mostrarNotificacion('Completa la verificación de seguridad antes de enviar el pedido', 'error');
+      return;
+    }
+
+    const botonEnviar = form.querySelector('button[type="submit"]');
+    const textoOriginal = botonEnviar?.textContent;
+    if (botonEnviar) {
+      botonEnviar.disabled = true;
+      botonEnviar.textContent = 'Enviando pedido…';
+      botonEnviar.setAttribute('aria-busy', 'true');
+    }
+
+    const datosPedido = {
+      cliente: {
+        nombre: form.nombre.value.trim(),
+        telefono: form.telefono.value.trim(),
+        direccion: form.direccion.value.trim(),
+        referencia: form.referencia.value.trim(),
+        tipoEntrega: form.tipoEntrega.value.toLowerCase(),
+        metodoPago: form.metodoPago.value.toLowerCase(),
+        observaciones: form.observaciones.value.trim()
+      },
+      productos: carrito.items.map(item => ({
+        id: item.id,
+        nombre: item.nombre,
+        cantidad: item.cantidad
+      })),
+      turnstileToken
     };
 
-    const resultado = whatsappIntegracion.procesarPedido(datos);
+    try {
+      const respuesta = await fetch('https://api.elcorralito.food/pedido-web', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosPedido)
+      });
+      const resultado = await respuesta.json().catch(() => ({}));
 
-    if (resultado.exito) {
+      if (!respuesta.ok || !resultado.success) {
+        throw new Error(resultado.message || 'No fue posible enviar el pedido. Inténtalo de nuevo.');
+      }
+
+      carrito.vaciarCarrito();
       form.reset();
+      window.turnstile?.reset();
       this.cerrarFormularioPedido();
-      this.mostrarNotificacion(resultado.mensaje, 'exito');
-    } else {
-      this.mostrarNotificacion(resultado.mensaje, 'error');
+      this.mostrarNotificacion(resultado.message || '¡Pedido recibido correctamente!', 'exito');
+    } catch (error) {
+      this.mostrarNotificacion(error.message || 'Error de conexión. Inténtalo de nuevo.', 'error');
+      window.turnstile?.reset();
+    } finally {
+      if (botonEnviar) {
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = textoOriginal;
+        botonEnviar.removeAttribute('aria-busy');
+      }
     }
   }
 

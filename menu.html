@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -214,7 +215,10 @@
         <div class="form-group paso-formulario" id="paso-final" hidden>
           <label for="observaciones">Observaciones (opcional)</label>
           <textarea id="observaciones" name="observaciones" placeholder="Sin cebolla, extra queso, sin mayonesa, etc."></textarea>
-          <button type="submit" class="btn btn-primario btn-grande">Enviar pedido por WhatsApp</button>
+          <div class="turnstile-container">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEzN2rHuJIwp94eO" data-theme="light" data-size="flexible" data-language="es"></div>
+          </div>
+          <button type="submit" class="btn btn-primario btn-grande">Confirmar pedido</button>
         </div>
       </form>
       </div>
@@ -255,7 +259,6 @@
   <!-- Scripts -->
   <script src="js/productos.js"></script>
   <script src="js/carrito.js"></script>
-  <script src="js/whatsapp.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
