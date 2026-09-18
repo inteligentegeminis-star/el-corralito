@@ -107,7 +107,7 @@ const PRODUCTOS = [
     descripcion: "Papa, salchicha, pollo, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 17000,
     categoria: "Salchipapas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/aH1CyF5.png",
     etiqueta: null
   },
   {
@@ -257,10 +257,10 @@ const PRODUCTOS = [
   {
     id: 28,
     nombre: "Clásico Uno",
-    descripcion: "Papa, pollo, carne, chorizo, butifarra, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
+    descripcion: "Papa, pollo, carne, chorizo, butifarra, tocineta, lechuga, cebolla, queso gratinado, maíz y salsas tártara y tomate. Piña opcional.",
     precio: 24000,
     categoria: "Desgranados",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/q4Ocaiq.png",
     etiqueta: null
   },
   {
