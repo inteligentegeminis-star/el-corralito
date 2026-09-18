@@ -21,7 +21,7 @@ class App {
       return;
     }
 
-    const destacados = [1, 8, 30, 39];
+    const destacados = [16, 26, 29, 31, 39, 43];
     this.cargarProductos(document.body.dataset.pagina === 'inicio'
       ? PRODUCTOS.filter(producto => destacados.includes(producto.id))
       : PRODUCTOS);
@@ -152,7 +152,7 @@ class App {
       mostrar('entrega', [tipoEntrega], nombreValido);
 
       const hayEntrega = nombreValido && tipoEntrega.value;
-      const esDomicilio = tipoEntrega.value === 'Domicilio';
+      const esDomicilio = tipoEntrega.value === 'domicilio';
       mostrar('domicilio', [direccion, referencia], hayEntrega && esDomicilio);
       direccion.required = esDomicilio;
       referencia.required = esDomicilio;
@@ -209,7 +209,7 @@ class App {
 
     contenedor.setAttribute('aria-busy', 'true');
     contenedor.innerHTML = productosAMostrar.map(producto => `
-      <article class="producto-card">
+      <article class="producto-card producto-card-interactiva" data-producto-id="${producto.id}" tabindex="0" aria-label="Ver detalles de ${producto.nombre}">
         <div class="producto-imagen">
           <span class="skeleton skeleton-imagen" aria-hidden="true"></span>
           <img class="producto-imagen-lazy" data-src="${producto.imagen}" alt="${producto.nombre}" width="400" height="220" decoding="async">
@@ -221,13 +221,13 @@ class App {
           <div class="producto-footer">
             <span class="producto-precio">$${producto.precio.toLocaleString('es-CO')}</span>
             <div class="producto-acciones">
-              <button class="btn btn-secundario" onclick="app.verDetalle(${producto.id})" title="Ver detalle">
+              <button type="button" class="btn btn-secundario btn-ver-detalle" onclick="app.verDetalle(${producto.id})" title="Ver detalles de ${producto.nombre}" aria-label="Ver detalles de ${producto.nombre}">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
               </button>
-              <button class="btn btn-primario" onclick="carrito.agregarProducto(${producto.id})">
+              <button type="button" class="btn btn-primario" onclick="carrito.agregarProducto(${producto.id})">
                 Agregar
               </button>
             </div>
@@ -236,6 +236,7 @@ class App {
       </article>
     `).join('');
 
+    this.configurarTarjetasProductos(contenedor);
     this.activarLazyLoading(contenedor);
     contenedor.setAttribute('aria-busy', 'false');
     this.actualizarContador(productosAMostrar.length);
@@ -245,6 +246,24 @@ class App {
     const contador = document.getElementById('contador-productos');
     if (!contador) return;
     contador.textContent = cantidad === 1 ? '1 producto disponible' : `${cantidad} productos disponibles`;
+  }
+
+  configurarTarjetasProductos(contenedor) {
+    contenedor.querySelectorAll('.producto-card-interactiva').forEach(tarjeta => {
+      const abrirDetalle = () => this.verDetalle(Number(tarjeta.dataset.productoId));
+
+      tarjeta.addEventListener('click', (evento) => {
+        if (evento.target.closest('button, a, input, textarea, select')) return;
+        abrirDetalle();
+      });
+
+      tarjeta.addEventListener('keydown', (evento) => {
+        if (evento.target.closest('button, a, input, textarea, select')) return;
+        if (evento.key !== 'Enter' && evento.key !== ' ') return;
+        evento.preventDefault();
+        abrirDetalle();
+      });
+    });
   }
 
   activarLazyLoading(contenedor) {
@@ -323,7 +342,7 @@ class App {
             <p class="modal-categoria">${producto.categoria}</p>
             <p class="modal-descripcion">${producto.descripcion}</p>
             <div class="modal-precio">$${producto.precio.toLocaleString('es-CO')}</div>
-            <button class="btn btn-primario btn-grande" onclick="carrito.agregarProducto(${producto.id}); this.parentElement.parentElement.parentElement.remove()">
+            <button type="button" class="btn btn-primario btn-grande" onclick="carrito.agregarProducto(${producto.id}); this.closest('.modal-detalle').remove()">
               Agregar al carrito
             </button>
           </div>
@@ -340,25 +359,73 @@ class App {
     });
   }
 
-  procesarPedido(form) {
-    const datos = {
-      nombre: form.nombre.value,
-      telefono: form.telefono.value,
-      direccion: form.direccion.value,
-      referencia: form.referencia.value,
-      tipoEntrega: form.tipoEntrega.value,
-      metodoPago: form.metodoPago.value,
-      observaciones: form.observaciones.value
+  async procesarPedido(form) {
+    if (carrito.obtenerCantidadTotal() === 0) {
+      this.mostrarNotificacion('Tu carrito está vacío', 'error');
+      return;
+    }
+
+    const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value || window.turnstile?.getResponse?.() || '';
+    if (!turnstileToken) {
+      this.mostrarNotificacion('Completa la verificación de seguridad antes de enviar el pedido', 'error');
+      return;
+    }
+
+    const botonEnviar = form.querySelector('button[type="submit"]');
+    const textoOriginal = botonEnviar?.textContent;
+    if (botonEnviar) {
+      botonEnviar.disabled = true;
+      botonEnviar.textContent = 'Enviando pedido…';
+      botonEnviar.setAttribute('aria-busy', 'true');
+    }
+
+    const tipoEntrega = (form.tipoEntrega.value || '').toLowerCase();
+    const metodoPago = (form.metodoPago.value || '').toLowerCase();
+
+    const datosPedido = {
+      cliente: {
+        nombre: form.nombre.value.trim(),
+        telefono: form.telefono.value.trim(),
+        direccion: form.direccion.value.trim(),
+        referencia: form.referencia.value.trim(),
+        tipoEntrega,
+        metodoPago,
+        observaciones: form.observaciones.value.trim()
+      },
+      productos: carrito.items.map(item => ({
+        id: item.id,
+        nombre: item.nombre,
+        cantidad: item.cantidad
+      })),
+      turnstileToken
     };
 
-    const resultado = whatsappIntegracion.procesarPedido(datos);
+    try {
+      const respuesta = await fetch('https://api.elcorralito.food/pedido-web', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosPedido)
+      });
+      const resultado = await respuesta.json().catch(() => ({}));
 
-    if (resultado.exito) {
+      if (!respuesta.ok || !resultado.success) {
+        throw new Error(resultado.message || 'No fue posible enviar el pedido. Inténtalo de nuevo.');
+      }
+
+      carrito.vaciarCarrito();
       form.reset();
+      window.turnstile?.reset();
       this.cerrarFormularioPedido();
-      this.mostrarNotificacion(resultado.mensaje, 'exito');
-    } else {
-      this.mostrarNotificacion(resultado.mensaje, 'error');
+      this.mostrarNotificacion(resultado.message || '¡Pedido recibido correctamente!', 'exito');
+    } catch (error) {
+      this.mostrarNotificacion(error.message || 'Error de conexión. Inténtalo de nuevo.', 'error');
+      window.turnstile?.reset();
+    } finally {
+      if (botonEnviar) {
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = textoOriginal;
+        botonEnviar.removeAttribute('aria-busy');
+      }
     }
   }
 

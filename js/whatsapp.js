@@ -173,4 +173,5 @@ class WhatsAppIntegracion {
 }
 
 // Crear instancia global
-const whatsappIntegracion = new WhatsAppIntegracion();
+window.whatsappIntegracion = new WhatsAppIntegracion();
+const whatsappIntegracion = window.whatsappIntegracion;
