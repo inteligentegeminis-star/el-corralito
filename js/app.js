@@ -458,12 +458,16 @@ class App {
 
     if (tipo === 'exito') {
       iconoEl.innerHTML = '<span>✓</span>';
-      accionBtn.textContent = 'Guardar comprobante';
+      iconoEl.style.background = 'linear-gradient(135deg, rgba(34, 197, 94, 0.14), rgba(22, 163, 74, 0.12))';
+      iconoEl.style.color = '#15803d';
+      accionBtn.textContent = 'Aceptar';
       accionBtn.style.display = 'inline-flex';
-      secundarioBtn.textContent = 'Copiar mensaje';
+      secundarioBtn.textContent = 'Guardar imagen';
       secundarioBtn.style.display = 'inline-flex';
     } else {
       iconoEl.innerHTML = '<span class="estado-pedido__spinner"></span>';
+      iconoEl.style.background = 'linear-gradient(135deg, rgba(11, 106, 72, 0.14), rgba(43, 164, 96, 0.12))';
+      iconoEl.style.color = 'var(--color-primario)';
       accionBtn.style.display = 'none';
       secundarioBtn.style.display = 'none';
     }
@@ -511,44 +515,111 @@ class App {
     ].join('\n');
   }
 
+  crearImagenPedido(resultado, datosPedido) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 900;
+    canvas.height = 1300;
+
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, '#f7fff9');
+    gradient.addColorStop(1, '#edfdf3');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const cardX = 70;
+    const cardY = 90;
+    const cardW = canvas.width - 140;
+    const cardH = canvas.height - 180;
+
+    ctx.fillStyle = '#ffffff';
+    ctx.strokeStyle = '#d8f0df';
+    ctx.lineWidth = 3;
+    roundRect(ctx, cardX, cardY, cardW, cardH, 36);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#0e7a44';
+    ctx.font = '700 44px Arial';
+    ctx.fillText('EL CORRALITO', cardX + 30, cardY + 90);
+
+    ctx.fillStyle = '#1f2937';
+    ctx.font = '700 34px Arial';
+    const titulo = resultado.message || 'Pedido recibido';
+    wrapText(ctx, titulo, cardX + 30, cardY + 150, cardW - 60, 38, 2);
+
+    ctx.fillStyle = '#374151';
+    ctx.font = '600 24px Arial';
+    const fecha = new Date().toLocaleString('es-CO', { dateStyle: 'medium', timeStyle: 'short' });
+    ctx.fillText(`Fecha: ${fecha}`, cardX + 30, cardY + 245);
+
+    ctx.fillStyle = '#111827';
+    ctx.font = '700 24px Arial';
+    ctx.fillText('Cliente:', cardX + 30, cardY + 300);
+    ctx.font = '500 22px Arial';
+    ctx.fillText(datosPedido.cliente.nombre || 'Sin nombre', cardX + 30, cardY + 335);
+    ctx.fillText(`Tel: ${datosPedido.cliente.telefono || 'No indicado'}`, cardX + 30, cardY + 370);
+    ctx.fillText(`Entrega: ${datosPedido.cliente.tipoEntrega || 'No indicado'}`, cardX + 30, cardY + 405);
+    ctx.fillText(`Pago: ${datosPedido.cliente.metodoPago || 'No indicado'}`, cardX + 30, cardY + 440);
+
+    const productos = carrito.items || [];
+    const total = productos.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+
+    ctx.fillStyle = '#111827';
+    ctx.font = '700 24px Arial';
+    ctx.fillText('Pedido:', cardX + 30, cardY + 500);
+    ctx.font = '500 22px Arial';
+    let y = cardY + 535;
+    productos.forEach(item => {
+      const texto = `${item.cantidad}x ${item.nombre} - $${(item.precio * item.cantidad).toLocaleString('es-CO')}`;
+      ctx.fillText(texto, cardX + 30, y);
+      y += 36;
+    });
+
+    ctx.fillStyle = '#0e7a44';
+    ctx.font = '700 30px Arial';
+    ctx.fillText(`Total: $${total.toLocaleString('es-CO')}`, cardX + 30, cardY + 670);
+
+    ctx.fillStyle = '#6b7280';
+    ctx.font = '500 22px Arial';
+    ctx.fillText('Gracias por tu compra en El Corralito', cardX + 30, cardY + 760);
+
+    const url = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.download = 'pedido-el-corralito.png';
+    link.href = url;
+    link.click();
+  }
+
   mostrarComprobantePedido(resultado, datosPedido) {
-    const textoComprobante = this.generarTextoComprobantePedido(resultado, datosPedido);
     const contenidoEl = document.getElementById('estado-pedido-contenido');
-    const mensajeEl = document.getElementById('estado-pedido-mensaje');
     const accionBtn = document.getElementById('estado-pedido-accion');
     const secundarioBtn = document.getElementById('estado-pedido-secundario');
 
-    if (!contenidoEl || !mensajeEl || !accionBtn || !secundarioBtn) return;
+    if (!contenidoEl || !accionBtn || !secundarioBtn) return;
+
+    const mensajePrincipal = resultado.message || 'Tu pedido fue recibido correctamente.';
 
     this.mostrarEstadoPedido({
       tipo: 'exito',
       titulo: '¡Pedido confirmado!',
-      mensaje: resultado.message || 'Tu pedido fue recibido correctamente.',
-      detalle: 'Puedes leer, copiar o guardar el comprobante del pedido.'
+      mensaje: mensajePrincipal,
+      detalle: 'Toca aceptar para cerrar o guarda la confirmación como imagen.'
     });
 
-    contenidoEl.textContent = textoComprobante;
+    contenidoEl.textContent = mensajePrincipal;
     contenidoEl.classList.add('visible');
 
     accionBtn.onclick = () => {
-      const blob = new Blob([textoComprobante], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'comprobante-pedido-el-corralito.txt';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
-      this.mostrarNotificacion('Comprobante descargado', 'exito');
+      this.ocultarEstadoPedido();
     };
 
-    secundarioBtn.onclick = async () => {
+    secundarioBtn.onclick = () => {
       try {
-        await navigator.clipboard.writeText(textoComprobante);
-        this.mostrarNotificacion('Mensaje copiado al portapapeles', 'exito');
+        this.crearImagenPedido(resultado, datosPedido);
+        this.mostrarNotificacion('Pedido guardado como imagen', 'exito');
       } catch (error) {
-        this.mostrarNotificacion('No se pudo copiar automáticamente', 'error');
+        this.mostrarNotificacion('No se pudo guardar la imagen', 'error');
       }
     };
   }
@@ -576,7 +647,44 @@ class App {
   }
 }
 
-// Crear instancia global cuando el DOM esté listo
+function roundRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+  const words = text.split(' ');
+  let line = '';
+  let lineCount = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    const testLine = line + words[i] + ' ';
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > maxWidth && i > 0) {
+      ctx.fillText(line, x, y);
+      y += lineHeight;
+      line = words[i] + ' ';
+      lineCount += 1;
+      if (lineCount >= maxLines) break;
+    } else {
+      line = testLine;
+    }
+  }
+
+  if (lineCount < maxLines) {
+    ctx.fillText(line.trim(), x, y);
+  }
+}
+
 let app;
 document.addEventListener('DOMContentLoaded', () => {
   app = new App();
