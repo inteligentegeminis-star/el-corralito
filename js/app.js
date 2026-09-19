@@ -407,6 +407,16 @@ class App {
       detalle: 'No cierres esta ventana mientras revisamos tu orden.'
     });
 
+    const pedidoResumen = {
+      items: carrito.items.map(item => ({
+        id: item.id,
+        nombre: item.nombre,
+        precio: item.precio,
+        cantidad: item.cantidad
+      })),
+      total: carrito.items.reduce((acumulado, item) => acumulado + (item.precio * item.cantidad), 0)
+    };
+
     try {
       const respuesta = await fetch('https://api.elcorralito.food/pedido-web', {
         method: 'POST',
@@ -423,7 +433,7 @@ class App {
       form.reset();
       window.turnstile?.reset();
       this.cerrarFormularioPedido();
-      this.mostrarComprobantePedido(resultado, datosPedido);
+      this.mostrarComprobantePedido(resultado, datosPedido, pedidoResumen);
     } catch (error) {
       this.ocultarEstadoPedido();
       this.mostrarNotificacion(error.message || 'Error de conexión. Inténtalo de nuevo.', 'error');
@@ -462,7 +472,7 @@ class App {
       iconoEl.style.color = '#15803d';
       accionBtn.textContent = 'Aceptar';
       accionBtn.style.display = 'inline-flex';
-      secundarioBtn.textContent = 'Guardar imagen';
+      secundarioBtn.textContent = 'Descargar comprobante';
       secundarioBtn.style.display = 'inline-flex';
     } else {
       iconoEl.innerHTML = '<span class="estado-pedido__spinner"></span>';
@@ -484,10 +494,11 @@ class App {
     overlay.setAttribute('aria-hidden', 'true');
   }
 
-  generarTextoComprobantePedido(resultado, datosPedido) {
+  generarTextoComprobantePedido(resultado, datosPedido, pedidoResumen = { items: [], total: 0 }) {
     const fecha = new Date();
-    const productos = (carrito.items || []).map(item => `• ${item.cantidad}x ${item.nombre} - $${(item.precio * item.cantidad).toLocaleString('es-CO')}`).join('\n');
-    const total = carrito.items.reduce((acumulado, item) => acumulado + (item.precio * item.cantidad), 0);
+    const items = pedidoResumen.items || [];
+    const productos = items.map(item => `• ${item.cantidad}x ${item.nombre} - $${(item.precio * item.cantidad).toLocaleString('es-CO')}`).join('\n');
+    const total = pedidoResumen.total || 0;
     const numeroPedido = resultado.numeroPedido || resultado.pedidoId || `PED-${fecha.getTime()}`;
 
     return [
@@ -515,7 +526,7 @@ class App {
     ].join('\n');
   }
 
-  crearImagenPedido(resultado, datosPedido) {
+  crearImagenPedido(resultado, datosPedido, pedidoResumen = { items: [], total: 0 }) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 900;
@@ -562,8 +573,8 @@ class App {
     ctx.fillText(`Entrega: ${datosPedido.cliente.tipoEntrega || 'No indicado'}`, cardX + 30, cardY + 405);
     ctx.fillText(`Pago: ${datosPedido.cliente.metodoPago || 'No indicado'}`, cardX + 30, cardY + 440);
 
-    const productos = carrito.items || [];
-    const total = productos.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+    const productos = pedidoResumen.items || [];
+    const total = pedidoResumen.total || 0;
 
     ctx.fillStyle = '#111827';
     ctx.font = '700 24px Arial';
@@ -591,7 +602,7 @@ class App {
     link.click();
   }
 
-  mostrarComprobantePedido(resultado, datosPedido) {
+  mostrarComprobantePedido(resultado, datosPedido, pedidoResumen = { items: [], total: 0 }) {
     const contenidoEl = document.getElementById('estado-pedido-contenido');
     const accionBtn = document.getElementById('estado-pedido-accion');
     const secundarioBtn = document.getElementById('estado-pedido-secundario');
@@ -604,10 +615,10 @@ class App {
       tipo: 'exito',
       titulo: '¡Pedido confirmado!',
       mensaje: mensajePrincipal,
-      detalle: 'Toca aceptar para cerrar o guarda la confirmación como imagen.'
+      detalle: 'Toca aceptar para cerrar o descarga el comprobante del pedido.'
     });
 
-    contenidoEl.textContent = mensajePrincipal;
+    contenidoEl.textContent = this.generarTextoComprobantePedido(resultado, datosPedido, pedidoResumen);
     contenidoEl.classList.add('visible');
 
     accionBtn.onclick = () => {
@@ -616,10 +627,10 @@ class App {
 
     secundarioBtn.onclick = () => {
       try {
-        this.crearImagenPedido(resultado, datosPedido);
-        this.mostrarNotificacion('Pedido guardado como imagen', 'exito');
+        this.crearImagenPedido(resultado, datosPedido, pedidoResumen);
+        this.mostrarNotificacion('Comprobante descargado', 'exito');
       } catch (error) {
-        this.mostrarNotificacion('No se pudo guardar la imagen', 'error');
+        this.mostrarNotificacion('No se pudo descargar el comprobante', 'error');
       }
     };
   }
