@@ -806,12 +806,31 @@ form .btn {
 
 .estado-pedido__panel {
   position: relative;
+  z-index: 2;
   width: min(560px, 100%);
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.2);
+  background: linear-gradient(180deg, #ffffff 0%, #f7fff9 100%);
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.24);
   padding: 2rem 1.5rem 1.5rem;
   text-align: center;
+  animation: alertIn 0.25s ease;
+}
+
+.estado-pedido__panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes alertIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .estado-pedido__cerrar {
@@ -873,6 +892,8 @@ form .btn {
 }
 
 .estado-pedido__contenido {
+  position: relative;
+  z-index: 3;
   margin: 0 auto 1.2rem;
   max-height: 220px;
   overflow: auto;
@@ -894,6 +915,8 @@ form .btn {
 }
 
 .estado-pedido__acciones {
+  position: relative;
+  z-index: 4;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -901,7 +924,10 @@ form .btn {
 }
 
 .estado-pedido__acciones .btn {
+  position: relative;
+  z-index: 5;
   min-width: 180px;
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.18);
 }
 
 @keyframes spin {
