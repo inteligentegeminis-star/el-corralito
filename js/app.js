@@ -472,7 +472,7 @@ class App {
       iconoEl.style.color = '#15803d';
       accionBtn.textContent = 'Aceptar';
       accionBtn.style.display = 'inline-flex';
-      secundarioBtn.textContent = 'Descargar comprobante';
+      secundarioBtn.textContent = 'Guardar en galería';
       secundarioBtn.style.display = 'inline-flex';
     } else {
       iconoEl.innerHTML = '<span class="estado-pedido__spinner"></span>';
@@ -526,7 +526,7 @@ class App {
     ].join('\n');
   }
 
-  crearImagenPedido(resultado, datosPedido, pedidoResumen = { items: [], total: 0 }) {
+  async crearImagenPedido(resultado, datosPedido, pedidoResumen = { items: [], total: 0 }) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 900;
@@ -595,11 +595,47 @@ class App {
     ctx.font = '500 22px Arial';
     ctx.fillText('Gracias por tu compra en El Corralito', cardX + 30, cardY + 760);
 
-    const url = canvas.toDataURL('image/png');
+    const blob = await new Promise((resolve, reject) => {
+      canvas.toBlob((result) => {
+        if (!result) reject(new Error('No se pudo generar la imagen'));
+        else resolve(result);
+      }, 'image/png');
+    });
+
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    const file = new File([blob], 'pedido-el-corralito.png', { type: 'image/png' });
+
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          title: 'Comprobante de pedido',
+          text: resultado.message || 'Pedido confirmado',
+          files: [file]
+        });
+        return;
+      } catch (error) {
+        // Si el usuario cancela, no bloquea la otra opción.
+      }
+    }
+
+    const url = URL.createObjectURL(blob);
+
+    if (isMobile) {
+      const nuevaVentana = window.open(url, '_blank');
+      if (nuevaVentana) {
+        nuevaVentana.opener = null;
+      }
+      setTimeout(() => URL.revokeObjectURL(url), 3000);
+      return;
+    }
+
     const link = document.createElement('a');
-    link.download = 'pedido-el-corralito.png';
     link.href = url;
+    link.download = 'pedido-el-corralito.png';
+    document.body.appendChild(link);
     link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
   mostrarComprobantePedido(resultado, datosPedido, pedidoResumen = { items: [], total: 0 }) {
@@ -625,12 +661,12 @@ class App {
       this.ocultarEstadoPedido();
     };
 
-    secundarioBtn.onclick = () => {
+    secundarioBtn.onclick = async () => {
       try {
-        this.crearImagenPedido(resultado, datosPedido, pedidoResumen);
-        this.mostrarNotificacion('Comprobante descargado', 'exito');
+        await this.crearImagenPedido(resultado, datosPedido, pedidoResumen);
+        this.mostrarNotificacion('Comprobante listo para guardar', 'exito');
       } catch (error) {
-        this.mostrarNotificacion('No se pudo descargar el comprobante', 'error');
+        this.mostrarNotificacion('No se pudo guardar el comprobante', 'error');
       }
     };
   }
