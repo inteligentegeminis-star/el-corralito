@@ -225,6 +225,23 @@
     </section>
   </main>
 
+  <div id="estado-pedido" class="estado-pedido hidden" aria-hidden="true">
+    <div class="estado-pedido__panel" role="dialog" aria-modal="true" aria-labelledby="estado-pedido-titulo">
+      <button type="button" id="estado-pedido-cerrar" class="estado-pedido__cerrar" aria-label="Cerrar comprobante">×</button>
+      <div id="estado-pedido-icono" class="estado-pedido__icon" aria-hidden="true">
+        <span class="estado-pedido__spinner"></span>
+      </div>
+      <p class="estado-pedido__eyebrow">Pedido</p>
+      <h3 id="estado-pedido-titulo">Procesando tu pedido</h3>
+      <p id="estado-pedido-mensaje">Estamos confirmando tu solicitud y te mostraremos el comprobante.</p>
+      <div id="estado-pedido-contenido" class="estado-pedido__contenido" aria-live="polite"></div>
+      <div class="estado-pedido__acciones">
+        <button type="button" id="estado-pedido-accion" class="btn btn-primario">Guardar comprobante</button>
+        <button type="button" id="estado-pedido-secundario" class="btn btn-secundario">Copiar mensaje</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="footer-content">

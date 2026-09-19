@@ -400,6 +400,13 @@ class App {
       turnstileToken
     };
 
+    this.mostrarEstadoPedido({
+      tipo: 'espera',
+      titulo: 'Procesando tu pedido',
+      mensaje: 'Estamos confirmando tu solicitud y te mostraremos el comprobante en cuanto llegue la respuesta.',
+      detalle: 'No cierres esta ventana mientras revisamos tu orden.'
+    });
+
     try {
       const respuesta = await fetch('https://api.elcorralito.food/pedido-web', {
         method: 'POST',
@@ -416,8 +423,9 @@ class App {
       form.reset();
       window.turnstile?.reset();
       this.cerrarFormularioPedido();
-      this.mostrarNotificacion(resultado.message || '¡Pedido recibido correctamente!', 'exito');
+      this.mostrarComprobantePedido(resultado, datosPedido);
     } catch (error) {
+      this.ocultarEstadoPedido();
       this.mostrarNotificacion(error.message || 'Error de conexión. Inténtalo de nuevo.', 'error');
       window.turnstile?.reset();
     } finally {
@@ -427,6 +435,122 @@ class App {
         botonEnviar.removeAttribute('aria-busy');
       }
     }
+  }
+
+  mostrarEstadoPedido({ tipo = 'espera', titulo, mensaje, detalle = '' }) {
+    const overlay = document.getElementById('estado-pedido');
+    if (!overlay) return;
+
+    const tituloEl = document.getElementById('estado-pedido-titulo');
+    const mensajeEl = document.getElementById('estado-pedido-mensaje');
+    const contenidoEl = document.getElementById('estado-pedido-contenido');
+    const iconoEl = document.getElementById('estado-pedido-icono');
+    const accionBtn = document.getElementById('estado-pedido-accion');
+    const secundarioBtn = document.getElementById('estado-pedido-secundario');
+    const cerrarBtn = document.getElementById('estado-pedido-cerrar');
+
+    if (!tituloEl || !mensajeEl || !contenidoEl || !iconoEl || !accionBtn || !secundarioBtn || !cerrarBtn) return;
+
+    tituloEl.textContent = titulo;
+    mensajeEl.textContent = mensaje;
+    contenidoEl.textContent = detalle;
+    contenidoEl.classList.remove('visible');
+
+    if (tipo === 'exito') {
+      iconoEl.innerHTML = '<span>✓</span>';
+      accionBtn.textContent = 'Guardar comprobante';
+      accionBtn.style.display = 'inline-flex';
+      secundarioBtn.textContent = 'Copiar mensaje';
+      secundarioBtn.style.display = 'inline-flex';
+    } else {
+      iconoEl.innerHTML = '<span class="estado-pedido__spinner"></span>';
+      accionBtn.style.display = 'none';
+      secundarioBtn.style.display = 'none';
+    }
+
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    cerrarBtn.onclick = () => this.ocultarEstadoPedido();
+  }
+
+  ocultarEstadoPedido() {
+    const overlay = document.getElementById('estado-pedido');
+    if (!overlay) return;
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  generarTextoComprobantePedido(resultado, datosPedido) {
+    const fecha = new Date();
+    const productos = (carrito.items || []).map(item => `• ${item.cantidad}x ${item.nombre} - $${(item.precio * item.cantidad).toLocaleString('es-CO')}`).join('\n');
+    const total = carrito.items.reduce((acumulado, item) => acumulado + (item.precio * item.cantidad), 0);
+    const numeroPedido = resultado.numeroPedido || resultado.pedidoId || `PED-${fecha.getTime()}`;
+
+    return [
+      'EL CORRALITO',
+      'COMPROBANTE DE PEDIDO',
+      `Pedido: ${numeroPedido}`,
+      `Fecha: ${fecha.toLocaleString('es-CO', { dateStyle: 'medium', timeStyle: 'short' })}`,
+      '',
+      `Cliente: ${datosPedido.cliente.nombre}`,
+      `Teléfono: ${datosPedido.cliente.telefono}`,
+      `Entrega: ${datosPedido.cliente.tipoEntrega}`,
+      `Dirección: ${datosPedido.cliente.direccion || 'No aplica'}`,
+      `Referencia: ${datosPedido.cliente.referencia || 'No aplica'}`,
+      `Pago: ${datosPedido.cliente.metodoPago}`,
+      '',
+      'Productos:',
+      productos || 'Sin productos',
+      '',
+      `Total estimado: $${total.toLocaleString('es-CO')}`,
+      '',
+      'Mensaje del sistema:',
+      resultado.message || 'Pedido recibido correctamente.',
+      '',
+      'Gracias por comprar en El Corralito.'
+    ].join('\n');
+  }
+
+  mostrarComprobantePedido(resultado, datosPedido) {
+    const textoComprobante = this.generarTextoComprobantePedido(resultado, datosPedido);
+    const contenidoEl = document.getElementById('estado-pedido-contenido');
+    const mensajeEl = document.getElementById('estado-pedido-mensaje');
+    const accionBtn = document.getElementById('estado-pedido-accion');
+    const secundarioBtn = document.getElementById('estado-pedido-secundario');
+
+    if (!contenidoEl || !mensajeEl || !accionBtn || !secundarioBtn) return;
+
+    this.mostrarEstadoPedido({
+      tipo: 'exito',
+      titulo: '¡Pedido confirmado!',
+      mensaje: resultado.message || 'Tu pedido fue recibido correctamente.',
+      detalle: 'Puedes leer, copiar o guardar el comprobante del pedido.'
+    });
+
+    contenidoEl.textContent = textoComprobante;
+    contenidoEl.classList.add('visible');
+
+    accionBtn.onclick = () => {
+      const blob = new Blob([textoComprobante], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'comprobante-pedido-el-corralito.txt';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      this.mostrarNotificacion('Comprobante descargado', 'exito');
+    };
+
+    secundarioBtn.onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(textoComprobante);
+        this.mostrarNotificacion('Mensaje copiado al portapapeles', 'exito');
+      } catch (error) {
+        this.mostrarNotificacion('No se pudo copiar automáticamente', 'error');
+      }
+    };
   }
 
   mostrarNotificacion(mensaje, tipo = 'info') {
