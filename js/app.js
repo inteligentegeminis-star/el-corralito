@@ -426,7 +426,10 @@ class App {
       const resultado = await respuesta.json().catch(() => ({}));
 
       if (!respuesta.ok || !resultado.success) {
-        throw new Error(resultado.message || 'No fue posible enviar el pedido. Inténtalo de nuevo.');
+        const error = new Error(resultado.message || 'No fue posible enviar el pedido. Inténtalo de nuevo.');
+        error.code = resultado.code;
+        error.serviceHours = resultado.service_hours;
+        throw error;
       }
 
       carrito.vaciarCarrito();
@@ -436,7 +439,10 @@ class App {
       this.mostrarComprobantePedido(resultado, datosPedido, pedidoResumen);
     } catch (error) {
       this.ocultarEstadoPedido();
-      this.mostrarNotificacion(error.message || 'Error de conexión. Inténtalo de nuevo.', 'error');
+      const mensaje = error.code === 'OUT_OF_SERVICE'
+        ? `${error.message || 'En este momento no estamos en servicio.'}${error.serviceHours ? ` ${error.serviceHours}` : ''}`
+        : error.message || 'Error de conexión. Inténtalo de nuevo.';
+      this.mostrarNotificacion(mensaje, 'error');
       window.turnstile?.reset();
     } finally {
       if (botonEnviar) {
