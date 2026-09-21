@@ -439,10 +439,16 @@ class App {
       this.mostrarComprobantePedido(resultado, datosPedido, pedidoResumen);
     } catch (error) {
       this.ocultarEstadoPedido();
-      const mensaje = error.code === 'OUT_OF_SERVICE'
-        ? `${error.message || 'En este momento no estamos en servicio.'}${error.serviceHours ? ` ${error.serviceHours}` : ''}`
-        : error.message || 'Error de conexión. Inténtalo de nuevo.';
-      this.mostrarNotificacion(mensaje, 'error');
+      if (error.code === 'OUT_OF_SERVICE') {
+        this.mostrarEstadoPedido({
+          tipo: 'error',
+          titulo: 'Pedido no disponible',
+          mensaje: error.message || 'En este momento no estamos en servicio.',
+          detalle: error.serviceHours || 'Consulta nuestro horario de atención.'
+        });
+      } else {
+        this.mostrarNotificacion(error.message || 'Error de conexión. Inténtalo de nuevo.', 'error');
+      }
       window.turnstile?.reset();
     } finally {
       if (botonEnviar) {
@@ -480,6 +486,13 @@ class App {
       accionBtn.style.display = 'inline-flex';
       secundarioBtn.textContent = 'Guardar en galería';
       secundarioBtn.style.display = 'inline-flex';
+    } else if (tipo === 'error') {
+      iconoEl.innerHTML = '<span>!</span>';
+      iconoEl.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.14), rgba(248, 113, 113, 0.12))';
+      iconoEl.style.color = '#b91c1c';
+      accionBtn.textContent = 'Aceptar';
+      accionBtn.style.display = 'inline-flex';
+      secundarioBtn.style.display = 'none';
     } else {
       iconoEl.innerHTML = '<span class="estado-pedido__spinner"></span>';
       iconoEl.style.background = 'linear-gradient(135deg, rgba(11, 106, 72, 0.14), rgba(43, 164, 96, 0.12))';
@@ -491,6 +504,7 @@ class App {
     overlay.classList.remove('hidden');
     overlay.setAttribute('aria-hidden', 'false');
     cerrarBtn.onclick = () => this.ocultarEstadoPedido();
+    accionBtn.onclick = () => this.ocultarEstadoPedido();
   }
 
   ocultarEstadoPedido() {
