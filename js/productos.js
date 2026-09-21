@@ -98,7 +98,7 @@ const PRODUCTOS = [
     descripcion: "Papa, salchicha, carne, lechuga, cebolla y salsas tártara y tomate. Piña opcional.",
     precio: 17000,
     categoria: "Salchipapas",
-    imagen: "https://i.imgur.com/qsRPSCS.png",
+    imagen: "https://i.imgur.com/ZDagtEH.png",
     etiqueta: "Más vendido"
   },
   {
